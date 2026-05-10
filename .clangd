@@ -15,6 +15,7 @@ CompileFlags:
     - '-Id:/edgedownload/stm32f103c8t6_znjj/Drivers/CMSIS/Include'
     - '-Id:/edgedownload/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/inc/'
     - '-Id:/edgedownload/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/'
+    - '-Id:/edgedownload/stm32f103c8t6_znjj/OLED'
     - '-DUSE_HAL_DRIVER'
     - '-DSTM32F103xB'
     - '-D__alignof__(x)='

@@ -21,6 +21,7 @@
 "stm32f103c8t6_znjj\stm32f1xx_hal_exti.o"
 "stm32f103c8t6_znjj\stm32f1xx_hal_uart.o"
 "stm32f103c8t6_znjj\system_stm32f1xx.o"
+"stm32f103c8t6_znjj\oled.o"
 "stm32f103c8t6_znjj\cmd.o"
 "stm32f103c8t6_znjj\msh.o"
 "stm32f103c8t6_znjj\msh_file.o"

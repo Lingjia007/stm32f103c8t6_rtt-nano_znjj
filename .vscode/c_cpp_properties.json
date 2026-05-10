@@ -22,7 +22,8 @@
                 "Drivers/CMSIS/Device/ST/STM32F1xx/Include",
                 "Drivers/CMSIS/Include",
                 "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/inc/",
-                "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/"
+                "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/",
+                "OLED"
             ],
             "defines": [
                 "USE_HAL_DRIVER",
