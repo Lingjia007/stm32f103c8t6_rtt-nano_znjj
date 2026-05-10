@@ -11,11 +11,11 @@ typedef uint32_t u32;
 
 //-----------------OLED端口定义----------------
 
-#define OLED_SCL_Clr() HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET)
-#define OLED_SCL_Set() HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET)
+#define OLED_SCL_Clr() GPIOB->BRR = GPIO_PIN_8
+#define OLED_SCL_Set() GPIOB->BSRR = GPIO_PIN_8
 
-#define OLED_SDA_Clr() HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET)
-#define OLED_SDA_Set() HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET)
+#define OLED_SDA_Clr() GPIOB->BRR = GPIO_PIN_9
+#define OLED_SDA_Set() GPIOB->BSRR = GPIO_PIN_9
 
 #define OLED_CMD 0  // 写命令
 #define OLED_DATA 1 // 写数据
