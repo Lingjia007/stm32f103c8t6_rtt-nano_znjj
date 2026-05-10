@@ -28,4 +28,7 @@ stm32f103c8t6_znjj/stm32f1xx_it.o: ..\Core\Src\stm32f1xx_it.c \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h \
-  ..\Core\Inc\stm32f1xx_it.h
+  ..\Core\Inc\stm32f1xx_it.h ..\ESP8266\esp8266_init.h \
+  ..\ESP8266\platform_wifi_esp8266_impl.h ..\ESP8266\platform_wifi.h \
+  ..\ESP8266\platform_uart.h ..\ESP8266\platform_mqtt_esp8266_impl.h \
+  ..\ESP8266\platform_mqtt.h ..\ESP8266\platform_uart_stm32_impl.h

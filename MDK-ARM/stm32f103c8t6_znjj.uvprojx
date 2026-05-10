@@ -341,7 +341,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xB</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../RT-Thread;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/inc/;../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/;../OLED</IncludePath>
+              <IncludePath>../Core/Inc;../RT-Thread;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/inc/;../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/;../OLED;..\Utils;..\ESP8266</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -2327,6 +2327,51 @@
                   </Cads>
                 </FileArmAds>
               </FileOption>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Utils</GroupName>
+          <Files>
+            <File>
+              <FileName>cJSON.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Utils\cJSON.c</FilePath>
+            </File>
+            <File>
+              <FileName>md5.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Utils\md5.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>ESP8266</GroupName>
+          <Files>
+            <File>
+              <FileName>esp8266_init.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ESP8266\esp8266_init.c</FilePath>
+            </File>
+            <File>
+              <FileName>platform_mqtt_esp8266_impl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ESP8266\platform_mqtt_esp8266_impl.c</FilePath>
+            </File>
+            <File>
+              <FileName>platform_uart_stm32_impl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ESP8266\platform_uart_stm32_impl.c</FilePath>
+            </File>
+            <File>
+              <FileName>platform_wifi_esp8266_impl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ESP8266\platform_wifi_esp8266_impl.c</FilePath>
+            </File>
+            <File>
+              <FileName>esp8266_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ESP8266\esp8266_test.c</FilePath>
             </File>
           </Files>
         </Group>

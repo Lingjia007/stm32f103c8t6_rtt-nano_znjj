@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -25,6 +26,7 @@
 #include "rtthread.h"
 #include "oled.h"
 #include "bmp.h"
+#include "esp8266_init.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -112,7 +114,7 @@ static void oled_thread_entry(void *parameter)
     OLED_ShowString(0, 36, (uint8_t *)"ABC", 24, 1);
     OLED_Refresh();
     rt_thread_mdelay(500);
-    OLED_ScrollDisplay(11, 4, 1);
+    // OLED_ScrollDisplay(11, 4, 1);
   }
 }
 
@@ -144,6 +146,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   OLED_Init();
   OLED_Clear();
@@ -152,10 +155,13 @@ int main(void)
   OLED_ShowString(0, 0, (uint8_t *)"Hello RTThread!", 16, 1);
   OLED_Refresh();
 
+  esp8266_platform_init();
+  esp8266_uart_enable_it();
+
   led_thread = rt_thread_create("led",
                                 led_thread_entry,
                                 RT_NULL,
-                                256,
+                                128,
                                 20,
                                 20);
   if (led_thread != RT_NULL)
@@ -164,7 +170,7 @@ int main(void)
   oled_thread = rt_thread_create("oled",
                                  oled_thread_entry,
                                  RT_NULL,
-                                 1024,
+                                 256,
                                  21,
                                  20);
   if (oled_thread != RT_NULL)

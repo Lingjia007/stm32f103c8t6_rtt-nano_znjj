@@ -1,0 +1,17 @@
+#ifndef ESP8266_CONFIG_H
+#define ESP8266_CONFIG_H
+
+#define ESP8266_WIFI_SSID "iQOO Neo8 Pro"
+#define ESP8266_WIFI_PASSWORD "12345678"
+
+#define ESP8266_MQTT_LINK_ID 0
+
+#ifndef ESP8266_TEST_ENABLED
+#define ESP8266_TEST_ENABLED 1
+#endif
+
+#define ONENET_MQTT_HOST "mqtts.heclouds.com"
+#define ONENET_MQTT_PORT 1883
+#define ONENET_MQTT_TOKEN "version=2018-10-31&res=products%2FOmZ40ZapAD%2Fdevices%2FSTM32F407VGT6_SKYSTAR&et=1805693871&method=md5&sign=wlMIxICT2EZd0J82j7UA%2Bw%3D%3D"
+
+#endif
