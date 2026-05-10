@@ -1,0 +1,3423 @@
+[
+    {
+        "directory": "MDK-ARM",
+        "file": "MDK-ARM/startup_stm32f103xb.s",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "MDK-ARM/startup_stm32f103xb.s",
+            "-o",
+            "build/stm32f103c8t6_znjj/MDK-ARM/startup_stm32f103xb.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/main.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/main.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/main.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/gpio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/gpio.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/gpio.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f1xx_it.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/stm32f1xx_it.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/stm32f1xx_it.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f1xx_hal_msp.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/stm32f1xx_hal_msp.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/stm32f1xx_hal_msp.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/system_stm32f1xx.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/system_stm32f1xx.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/system_stm32f1xx.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/cmd.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/cmd.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/cmd.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_file.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_file.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_file.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_parse.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_parse.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_parse.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/shell.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/shell.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/shell.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/context_rvds.S",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/context_rvds.S",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/context_rvds.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/cpuport.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/cpuport.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/cpuport.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config/board.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config/board.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config/board.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/clock.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/clock.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/clock.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/components.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/components.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/components.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/cpu.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/cpu.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/cpu.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/idle.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/idle.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/idle.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/ipc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/ipc.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/ipc.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/irq.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/irq.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/irq.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/kservice.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/kservice.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/kservice.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mem.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mem.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mem.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/memheap.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/memheap.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/memheap.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mempool.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mempool.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mempool.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/object.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/object.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/object.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/scheduler.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/scheduler.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/scheduler.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/signal.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/signal.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/signal.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/slab.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/slab.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/slab.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/thread.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/thread.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/thread.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/timer.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/timer.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/timer.o"
+        ]
+    },
+    {
+        "directory": "MDK-ARM",
+        "file": "MDK-ARM/startup_stm32f103xb.s",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "MDK-ARM/startup_stm32f103xb.s",
+            "-o",
+            "build/stm32f103c8t6_znjj/MDK-ARM/startup_stm32f103xb.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/main.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/main.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/main.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/gpio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/gpio.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/gpio.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/usart.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/usart.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/usart.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f1xx_it.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/stm32f1xx_it.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/stm32f1xx_it.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f1xx_hal_msp.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/stm32f1xx_hal_msp.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/stm32f1xx_hal_msp.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/system_stm32f1xx.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/system_stm32f1xx.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/system_stm32f1xx.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/cmd.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/cmd.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/cmd.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_file.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_file.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_file.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_parse.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_parse.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_parse.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/shell.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/shell.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/shell.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/context_rvds.S",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/context_rvds.S",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/context_rvds.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/cpuport.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/cpuport.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/cpuport.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config/board.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config/board.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config/board.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/clock.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/clock.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/clock.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/components.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/components.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/components.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/cpu.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/cpu.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/cpu.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/idle.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/idle.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/idle.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/ipc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/ipc.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/ipc.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/irq.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/irq.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/irq.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/kservice.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/kservice.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/kservice.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mem.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mem.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mem.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/memheap.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/memheap.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/memheap.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mempool.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mempool.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mempool.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/object.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/object.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/object.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/scheduler.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/scheduler.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/scheduler.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/signal.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/signal.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/signal.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/slab.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/slab.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/slab.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/thread.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/thread.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/thread.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/timer.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/timer.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/timer.o"
+        ]
+    },
+    {
+        "directory": "MDK-ARM",
+        "file": "MDK-ARM/startup_stm32f103xb.s",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "MDK-ARM/startup_stm32f103xb.s",
+            "-o",
+            "build/stm32f103c8t6_znjj/MDK-ARM/startup_stm32f103xb.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/main.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/main.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/main.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/gpio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/gpio.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/gpio.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/usart.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/usart.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/usart.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f1xx_it.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/stm32f1xx_it.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/stm32f1xx_it.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f1xx_hal_msp.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/stm32f1xx_hal_msp.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/stm32f1xx_hal_msp.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/system_stm32f1xx.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/system_stm32f1xx.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/system_stm32f1xx.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/cmd.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/cmd.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/cmd.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_file.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_file.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_file.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_parse.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_parse.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_parse.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/shell.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/shell.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/shell.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/context_rvds.S",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/context_rvds.S",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/context_rvds.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/cpuport.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/cpuport.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/cpuport.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config/board.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config/board.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config/board.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/clock.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/clock.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/clock.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/components.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/components.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/components.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/cpu.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/cpu.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/cpu.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/idle.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/idle.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/idle.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/ipc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/ipc.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/ipc.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/irq.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/irq.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/irq.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/kservice.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/kservice.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/kservice.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mem.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mem.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mem.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/memheap.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/memheap.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/memheap.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mempool.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mempool.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mempool.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/object.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/object.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/object.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/scheduler.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/scheduler.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/scheduler.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/signal.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/signal.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/signal.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/slab.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/slab.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/slab.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/thread.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/thread.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/thread.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/timer.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/timer.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/timer.o"
+        ]
+    },
+    {
+        "directory": "MDK-ARM",
+        "file": "MDK-ARM/startup_stm32f103xb.s",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "MDK-ARM/startup_stm32f103xb.s",
+            "-o",
+            "build/stm32f103c8t6_znjj/MDK-ARM/startup_stm32f103xb.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/main.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/main.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/main.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/gpio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/gpio.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/gpio.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/usart.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/usart.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/usart.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f1xx_it.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/stm32f1xx_it.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/stm32f1xx_it.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f1xx_hal_msp.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/stm32f1xx_hal_msp.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/stm32f1xx_hal_msp.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f1xx_hal_timebase_tim.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/stm32f1xx_hal_timebase_tim.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/stm32f1xx_hal_timebase_tim.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/system_stm32f1xx.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/system_stm32f1xx.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/system_stm32f1xx.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/cmd.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/cmd.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/cmd.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_file.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_file.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_file.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_parse.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_parse.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_parse.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/shell.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/shell.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/shell.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/context_rvds.S",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/context_rvds.S",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/context_rvds.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/cpuport.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/cpuport.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/cpuport.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config/board.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config/board.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config/board.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/clock.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/clock.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/clock.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/components.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/components.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/components.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/cpu.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/cpu.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/cpu.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/idle.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/idle.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/idle.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/ipc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/ipc.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/ipc.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/irq.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/irq.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/irq.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/kservice.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/kservice.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/kservice.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mem.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mem.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mem.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/memheap.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/memheap.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/memheap.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mempool.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mempool.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mempool.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/object.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/object.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/object.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/scheduler.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/scheduler.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/scheduler.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/signal.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/signal.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/signal.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/slab.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/slab.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/slab.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/thread.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/thread.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/thread.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/timer.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/timer.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/timer.o"
+        ]
+    },
+    {
+        "directory": "MDK-ARM",
+        "file": "MDK-ARM/startup_stm32f103xb.s",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "MDK-ARM/startup_stm32f103xb.s",
+            "-o",
+            "build/stm32f103c8t6_znjj/MDK-ARM/startup_stm32f103xb.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/main.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/main.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/main.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/gpio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/gpio.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/gpio.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/usart.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/usart.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/usart.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f1xx_it.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/stm32f1xx_it.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/stm32f1xx_it.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f1xx_hal_msp.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/stm32f1xx_hal_msp.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/stm32f1xx_hal_msp.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f1xx_hal_timebase_tim.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/stm32f1xx_hal_timebase_tim.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/stm32f1xx_hal_timebase_tim.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/system_stm32f1xx.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/system_stm32f1xx.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/system_stm32f1xx.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/cmd.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/cmd.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/cmd.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_file.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_file.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_file.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_parse.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_parse.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_parse.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/shell.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/shell.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/shell.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/context_rvds.S",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/context_rvds.S",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/context_rvds.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/cpuport.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/cpuport.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/cpuport.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config/board.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config/board.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config/board.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/clock.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/clock.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/clock.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/components.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/components.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/components.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/cpu.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/cpu.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/cpu.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/idle.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/idle.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/idle.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/ipc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/ipc.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/ipc.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/irq.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/irq.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/irq.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/kservice.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/kservice.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/kservice.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mem.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mem.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mem.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/memheap.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/memheap.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/memheap.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mempool.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mempool.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mempool.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/object.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/object.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/object.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/scheduler.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/scheduler.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/scheduler.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/signal.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/signal.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/signal.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/slab.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/slab.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/slab.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/thread.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/thread.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/thread.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/timer.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/timer.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/timer.o"
+        ]
+    },
+    {
+        "directory": "MDK-ARM",
+        "file": "MDK-ARM/startup_stm32f103xb.s",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "MDK-ARM/startup_stm32f103xb.s",
+            "-o",
+            "build/stm32f103c8t6_znjj/MDK-ARM/startup_stm32f103xb.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/main.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/main.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/main.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/gpio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/gpio.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/gpio.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/usart.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/usart.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/usart.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f1xx_it.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/stm32f1xx_it.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/stm32f1xx_it.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f1xx_hal_msp.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/stm32f1xx_hal_msp.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/stm32f1xx_hal_msp.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f1xx_hal_timebase_tim.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/stm32f1xx_hal_timebase_tim.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/stm32f1xx_hal_timebase_tim.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/system_stm32f1xx.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/system_stm32f1xx.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/system_stm32f1xx.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/cmd.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/cmd.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/cmd.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_file.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_file.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_file.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_parse.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_parse.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_parse.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/shell.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/shell.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/shell.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/context_rvds.S",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/context_rvds.S",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/context_rvds.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/cpuport.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/cpuport.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/cpuport.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config/board.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config/board.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config/board.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/clock.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/clock.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/clock.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/components.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/components.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/components.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/cpu.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/cpu.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/cpu.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/idle.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/idle.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/idle.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/ipc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/ipc.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/ipc.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/irq.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/irq.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/irq.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/kservice.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/kservice.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/kservice.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mem.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mem.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mem.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/memheap.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/memheap.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/memheap.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mempool.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mempool.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mempool.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/object.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/object.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/object.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/scheduler.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/scheduler.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/scheduler.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/signal.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/signal.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/signal.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/slab.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/slab.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/slab.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/thread.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/thread.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/thread.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/timer.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/timer.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/timer.o"
+        ]
+    },
+    {
+        "directory": "MDK-ARM",
+        "file": "MDK-ARM/startup_stm32f103xb.s",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "MDK-ARM/startup_stm32f103xb.s",
+            "-o",
+            "build/stm32f103c8t6_znjj/MDK-ARM/startup_stm32f103xb.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/main.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/main.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/main.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/gpio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/gpio.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/gpio.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/usart.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/usart.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/usart.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f1xx_it.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/stm32f1xx_it.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/stm32f1xx_it.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f1xx_hal_msp.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/stm32f1xx_hal_msp.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/stm32f1xx_hal_msp.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f1xx_hal_timebase_tim.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/stm32f1xx_hal_timebase_tim.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/stm32f1xx_hal_timebase_tim.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/system_stm32f1xx.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/system_stm32f1xx.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/system_stm32f1xx.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/cmd.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/cmd.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/cmd.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_file.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_file.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_file.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_parse.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_parse.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_parse.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/shell.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/shell.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/shell.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/context_rvds.S",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/context_rvds.S",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/context_rvds.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/cpuport.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/cpuport.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/libcpu/arm/cortex-m3/cpuport.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config/board.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config/board.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/bsp/_template/cubemx_config/board.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/clock.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/clock.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/clock.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/components.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/components.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/components.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/cpu.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/cpu.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/cpu.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/idle.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/idle.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/idle.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/ipc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/ipc.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/ipc.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/irq.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/irq.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/irq.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/kservice.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/kservice.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/kservice.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mem.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mem.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mem.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/memheap.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/memheap.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/memheap.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mempool.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mempool.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mempool.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/object.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/object.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/object.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/scheduler.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/scheduler.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/scheduler.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/signal.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/signal.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/signal.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/slab.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/slab.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/slab.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/thread.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/thread.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/thread.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src",
+        "file": "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/timer.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/timer.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/timer.o"
+        ]
+    }
+]
