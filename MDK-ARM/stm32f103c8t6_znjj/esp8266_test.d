@@ -8,6 +8,7 @@ stm32f103c8t6_znjj/esp8266_test.o: ..\ESP8266\esp8266_test.c \
   ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtservice.h \
   ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtm.h \
   ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\components\finsh\inc\finsh.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdio.h \
   C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h \
   C:\Keil_v5\ARM\ARMCLANG\include\string.h ..\ESP8266\esp8266_init.h \
   ..\ESP8266\platform_wifi_esp8266_impl.h ..\ESP8266\platform_wifi.h \

@@ -5,7 +5,7 @@
 #include "platform_uart.h"
 
 #define ESP8266_UART_RX_BUF_SIZE 1024
-#define ESP8266_UART_TX_BUF_SIZE 256
+#define ESP8266_UART_TX_BUF_SIZE 512
 
 typedef struct
 {

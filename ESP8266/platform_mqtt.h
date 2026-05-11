@@ -13,11 +13,11 @@
     ((type *)((char *)(ptr) - offsetof(type, member)))
 #endif
 
-#define PLATFORM_MQTT_MAX_TOPIC_LEN 64
-#define PLATFORM_MQTT_MAX_PAYLOAD_LEN 256
-#define PLATFORM_MQTT_MAX_CLIENT_ID_LEN 32
-#define PLATFORM_MQTT_MAX_USERNAME_LEN 64
-#define PLATFORM_MQTT_MAX_PASSWORD_LEN 64
+#define PLATFORM_MQTT_MAX_TOPIC_LEN 128
+#define PLATFORM_MQTT_MAX_PAYLOAD_LEN 512
+#define PLATFORM_MQTT_MAX_CLIENT_ID_LEN 64
+#define PLATFORM_MQTT_MAX_USERNAME_LEN 256
+#define PLATFORM_MQTT_MAX_PASSWORD_LEN 256
 
 typedef enum
 {
@@ -108,11 +108,11 @@ typedef struct
     ((mqtt) && (mqtt)->ops && (mqtt)->ops->check_property_set_recv ? (mqtt)->ops->check_property_set_recv((mqtt), (topic), (payload), (max_len), (msg_id)) : (int16_t)PLATFORM_MQTT_ERROR)
 
 #define MQTT_INIT_BASE(mqtt_ptr, ops_ptr, mqtt_name) \
-    do \
-    { \
-        (mqtt_ptr)->ops = (ops_ptr); \
-        (mqtt_ptr)->name = (mqtt_name); \
-        (mqtt_ptr)->user_data = NULL; \
+    do                                               \
+    {                                                \
+        (mqtt_ptr)->ops = (ops_ptr);                 \
+        (mqtt_ptr)->name = (mqtt_name);              \
+        (mqtt_ptr)->user_data = NULL;                \
     } while (0)
 
 #endif

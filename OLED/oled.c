@@ -36,9 +36,16 @@ void OLED_DisplayTurn(u8 i)
 // 延时
 void IIC_delay(void)
 {
-	volatile u8 t = 0;
-	while (t--)
-		;
+	// volatile u8 t = 0;
+	// while (t--)
+	// 	;
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
 }
 
 // 起始信号

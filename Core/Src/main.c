@@ -114,7 +114,7 @@ static void oled_thread_entry(void *parameter)
     OLED_ShowString(0, 36, (uint8_t *)"ABC", 24, 1);
     OLED_Refresh();
     rt_thread_mdelay(500);
-    // OLED_ScrollDisplay(11, 4, 1);
+    OLED_ScrollDisplay(11, 4, 1);
   }
 }
 

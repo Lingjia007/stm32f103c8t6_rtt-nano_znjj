@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static char g_mqtt_cmd[256];
+static char g_mqtt_cmd[512];
 static char g_mqtt_payload[PLATFORM_MQTT_MAX_PAYLOAD_LEN];
 
 static int16_t esp8266_mqtt_usercfg(void *ctx, uint8_t link_id, const platform_mqtt_user_config_t *config)
@@ -30,7 +30,7 @@ static int16_t esp8266_mqtt_connect(void *ctx, uint8_t link_id, const char *host
              "AT+MQTTCONN=%d,\"%s\",%u,%d",
              link_id, host, port, reconnect ? 1 : 0);
 
-    return WIFI_SEND_AT_CMD(&self->wifi->base, g_mqtt_cmd, "OK", 5000);
+    return WIFI_SEND_AT_CMD(&self->wifi->base, g_mqtt_cmd, "OK", 3000);
 }
 
 static int16_t esp8266_mqtt_disconnect(void *ctx, uint8_t link_id)
