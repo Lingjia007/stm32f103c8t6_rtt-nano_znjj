@@ -25,7 +25,6 @@
 /* USER CODE BEGIN Includes */
 #include "rtthread.h"
 #include "oled.h"
-#include "bmp.h"
 #include "esp8266_init.h"
 /* USER CODE END Includes */
 
@@ -75,7 +74,7 @@ static void oled_thread_entry(void *parameter)
 {
   while (1)
   {
-    OLED_ShowPicture(0, 0, 128, 64, BMP1, 1);
+    // OLED_ShowPicture(0, 0, 128, 64, BMP1, 1);
     OLED_Refresh();
     rt_thread_mdelay(500);
 
@@ -111,7 +110,6 @@ static void oled_thread_entry(void *parameter)
     OLED_ShowString(0, 0, (uint8_t *)"ABC", 8, 1);
     OLED_ShowString(0, 8, (uint8_t *)"ABC", 12, 1);
     OLED_ShowString(0, 20, (uint8_t *)"ABC", 16, 1);
-    OLED_ShowString(0, 36, (uint8_t *)"ABC", 24, 1);
     OLED_Refresh();
     rt_thread_mdelay(500);
     OLED_ScrollDisplay(11, 4, 1);

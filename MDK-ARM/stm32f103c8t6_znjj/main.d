@@ -38,7 +38,7 @@ stm32f103c8t6_znjj/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtservice.h \
   ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtm.h \
   ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\components\finsh\inc\finsh.h \
-  ..\OLED\oled.h C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h ..\OLED\bmp.h \
+  ..\OLED\oled.h C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h \
   ..\ESP8266\esp8266_init.h ..\ESP8266\platform_wifi_esp8266_impl.h \
   ..\ESP8266\platform_wifi.h ..\ESP8266\platform_uart.h \
   ..\ESP8266\platform_mqtt_esp8266_impl.h ..\ESP8266\platform_mqtt.h \
