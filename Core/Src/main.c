@@ -32,9 +32,10 @@
 #include "esp8266_config.h"
 
 #define DHT11_UPLOAD_ENABLED 1
-#define DHT11_UPLOAD_INTERVAL 3600
+#define DHT11_UPLOAD_INTERVAL 5000
+#define DHT11_READ_RETRY 3
 #define MQTT_AUTO_CONNECT 1
-#define MQTT_RECONNECT_INTERVAL 10000
+#define MQTT_RECONNECT_INTERVAL 30000
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -61,6 +62,10 @@ static rt_thread_t led_thread = RT_NULL;
 static rt_thread_t oled_thread = RT_NULL;
 static rt_thread_t dht11_thread = RT_NULL;
 static rt_thread_t mqtt_thread = RT_NULL;
+
+static rt_mutex_t g_esp8266_mutex = RT_NULL;
+
+static uint8_t g_mqtt_configured = 0;
 
 static dht11_data_t g_dht11_data;
 static uint8_t g_dht11_valid = 0;
@@ -139,6 +144,19 @@ static void dht11_thread_entry(void *parameter)
     dht11_data_t dht11_data;
     int prop_count = 0;
     int16_t ret;
+    int dht11_ok = 0;
+    int retry;
+
+    for (retry = 0; retry < DHT11_READ_RETRY; retry++)
+    {
+      if (dht11_read(&dht11_data) == DHT11_OK)
+      {
+        dht11_ok = 1;
+        break;
+      }
+      rt_kprintf("  DHT11 read retry %d/%d\n", retry + 1, DHT11_READ_RETRY);
+      rt_thread_mdelay(200);
+    }
 
     memset(props, 0, sizeof(props));
 
@@ -147,7 +165,7 @@ static void dht11_thread_entry(void *parameter)
     props[0].value_type = PLATFORM_MQTT_VALUE_BOOL;
     prop_count = 1;
 
-    if (dht11_read(&dht11_data) == DHT11_OK)
+    if (dht11_ok)
     {
       strncpy(props[1].key, "TEMPERATURE", sizeof(props[1].key) - 1);
       props[1].value_int = dht11_data.temperature_int;
@@ -163,12 +181,15 @@ static void dht11_thread_entry(void *parameter)
     }
     else
     {
-      rt_kprintf("  DHT11 read failed, publishing BSP_LED only\n");
+      rt_kprintf("  DHT11 read failed after %d retries\n", DHT11_READ_RETRY);
     }
 
+    rt_mutex_take(g_esp8266_mutex, RT_WAITING_FOREVER);
     ret = MQTT_PUBLISH_PROPERTY(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID,
                                 ONENET_PRODUCT_ID, ONENET_DEVICE_NAME,
                                 props, prop_count, "001");
+    rt_mutex_release(g_esp8266_mutex);
+
     if (ret == PLATFORM_MQTT_OK)
       rt_kprintf("Publish OK! (%d properties)\n", prop_count);
     else
@@ -180,26 +201,37 @@ static void dht11_thread_entry(void *parameter)
 
 static int mqtt_do_connect(void)
 {
-  platform_mqtt_user_config_t config;
   int16_t ret;
 
-  memset(&config, 0, sizeof(config));
-  strncpy(config.client_id, ONENET_DEVICE_NAME, sizeof(config.client_id) - 1);
-  strncpy(config.username, ONENET_PRODUCT_ID, sizeof(config.username) - 1);
-  strncpy(config.password, ONENET_MQTT_TOKEN, sizeof(config.password) - 1);
-
-  ret = MQTT_USERCFG(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID, &config);
-  if (ret != PLATFORM_MQTT_OK)
+  if (!g_mqtt_configured)
   {
-    rt_kprintf("MQTT config FAILED!\n");
-    return -1;
+    platform_mqtt_user_config_t config;
+
+    memset(&config, 0, sizeof(config));
+    strncpy(config.client_id, ONENET_DEVICE_NAME, sizeof(config.client_id) - 1);
+    strncpy(config.username, ONENET_PRODUCT_ID, sizeof(config.username) - 1);
+    strncpy(config.password, ONENET_MQTT_TOKEN, sizeof(config.password) - 1);
+
+    ret = MQTT_USERCFG(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID, &config);
+    if (ret != PLATFORM_MQTT_OK)
+    {
+      rt_kprintf("MQTT config FAILED!\n");
+      return -1;
+    }
+    g_mqtt_configured = 1;
+    rt_kprintf("MQTT configured!\n");
+  }
+  else
+  {
+    rt_kprintf("MQTT already configured, reconnecting...\n");
   }
 
   ret = MQTT_CONNECT(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID,
                      ONENET_MQTT_HOST, ONENET_MQTT_PORT, 1);
   if (ret != PLATFORM_MQTT_OK)
   {
-    rt_kprintf("MQTT connect FAILED!\n");
+    rt_kprintf("MQTT connect FAILED! resetting config flag\n");
+    g_mqtt_configured = 0;
     return -1;
   }
 
@@ -226,6 +258,8 @@ static void mqtt_thread_entry(void *parameter)
 
   while (1)
   {
+    rt_mutex_take(g_esp8266_mutex, RT_WAITING_FOREVER);
+
     if (MQTT_CHECK_CONNECTED(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID) != PLATFORM_MQTT_OK)
     {
       rt_kprintf("MQTT not connected, checking WiFi...\n");
@@ -233,6 +267,7 @@ static void mqtt_thread_entry(void *parameter)
       if (WIFI_AT_TEST(&g_esp8266_wifi.base) != PLATFORM_WIFI_OK)
       {
         rt_kprintf("ESP8266 AT test FAILED! Retrying...\n");
+        rt_mutex_release(g_esp8266_mutex);
         rt_thread_mdelay(MQTT_RECONNECT_INTERVAL);
         continue;
       }
@@ -247,6 +282,7 @@ static void mqtt_thread_entry(void *parameter)
         if (wifi_ret != PLATFORM_WIFI_OK)
         {
           rt_kprintf("WiFi reconnect FAILED! (error=%d)\n", wifi_ret);
+          rt_mutex_release(g_esp8266_mutex);
           rt_thread_mdelay(MQTT_RECONNECT_INTERVAL);
           continue;
         }
@@ -264,10 +300,8 @@ static void mqtt_thread_entry(void *parameter)
         mqtt_do_subscribe();
       }
     }
-    else
-    {
-      rt_kprintf("MQTT status: connected\n");
-    }
+
+    rt_mutex_release(g_esp8266_mutex);
 
     rt_thread_mdelay(MQTT_RECONNECT_INTERVAL);
   }
@@ -314,11 +348,13 @@ int main(void)
   esp8266_platform_init();
   esp8266_uart_enable_it();
 
+  g_esp8266_mutex = rt_mutex_create("esp8266", RT_IPC_FLAG_PRIO);
+
   led_thread = rt_thread_create("led",
                                 led_thread_entry,
                                 RT_NULL,
                                 128,
-                                21,
+                                24,
                                 10);
   if (led_thread != RT_NULL)
     rt_thread_startup(led_thread);
@@ -327,7 +363,7 @@ int main(void)
                                  oled_thread_entry,
                                  RT_NULL,
                                  256,
-                                 21,
+                                 24,
                                  10);
   if (oled_thread != RT_NULL)
     rt_thread_startup(oled_thread);
@@ -336,7 +372,7 @@ int main(void)
                                   dht11_thread_entry,
                                   RT_NULL,
                                   1024,
-                                  21,
+                                  20,
                                   25);
   if (dht11_thread != RT_NULL)
     rt_thread_startup(dht11_thread);
@@ -345,8 +381,8 @@ int main(void)
   mqtt_thread = rt_thread_create("mqtt",
                                  mqtt_thread_entry,
                                  RT_NULL,
-                                 1024,
-                                 20,
+                                 1536,
+                                 21,
                                  20);
   if (mqtt_thread != RT_NULL)
     rt_thread_startup(mqtt_thread);

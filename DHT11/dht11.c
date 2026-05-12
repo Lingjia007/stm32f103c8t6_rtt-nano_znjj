@@ -71,6 +71,7 @@ int dht11_read(dht11_data_t *data)
 {
     uint8_t buf[5];
     int i;
+    rt_base_t level;
 
     dht11_set_output();
     dht11_write_pin(GPIO_PIN_RESET);
@@ -78,25 +79,41 @@ int dht11_read(dht11_data_t *data)
     dht11_write_pin(GPIO_PIN_SET);
     rt_hw_us_delay(30);
 
+    level = rt_hw_interrupt_disable();
+
     dht11_set_input();
 
     if (!dht11_wait_pin(GPIO_PIN_RESET, 100))
+    {
+        rt_hw_interrupt_enable(level);
         return DHT11_TIMEOUT;
+    }
 
     if (!dht11_wait_pin(GPIO_PIN_SET, 100))
+    {
+        rt_hw_interrupt_enable(level);
         return DHT11_TIMEOUT;
+    }
 
     if (!dht11_wait_pin(GPIO_PIN_RESET, 100))
+    {
+        rt_hw_interrupt_enable(level);
         return DHT11_TIMEOUT;
+    }
 
     for (i = 0; i < 5; i++)
     {
         if (dht11_read_byte(&buf[i]) != DHT11_OK)
+        {
+            rt_hw_interrupt_enable(level);
             return DHT11_TIMEOUT;
+        }
     }
 
     dht11_set_output();
     dht11_write_pin(GPIO_PIN_SET);
+
+    rt_hw_interrupt_enable(level);
 
     if (buf[4] != (uint8_t)(buf[0] + buf[1] + buf[2] + buf[3]))
         return DHT11_ERROR;
