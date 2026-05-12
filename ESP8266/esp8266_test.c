@@ -4,6 +4,7 @@
 #include <string.h>
 #include "esp8266_init.h"
 #include "esp8266_config.h"
+#include "dht11.h"
 
 #if ESP8266_TEST_ENABLED && defined(RT_USING_FINSH)
 #include <finsh.h>
@@ -532,18 +533,44 @@ static int mqtt_full_test(int argc, char **argv)
     mqtt_subscribe();
     rt_thread_mdelay(200);
 
-    rt_kprintf("\n[4/6] Publishing test property...\n");
+    rt_kprintf("\n[4/6] Publishing properties...\n");
     {
-        platform_mqtt_property_t prop;
-        memset(&prop, 0, sizeof(prop));
-        strncpy(prop.key, "BSP_LED", sizeof(prop.key) - 1);
-        prop.value_int = 1;
-        prop.value_type = PLATFORM_MQTT_VALUE_BOOL;
+        platform_mqtt_property_t props[3];
+        dht11_data_t dht11_data;
+        int prop_count = 0;
+        int16_t ret;
 
-        int16_t ret = MQTT_PUBLISH_PROPERTY(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID,
-                                            ONENET_PRODUCT_ID, ONENET_DEVICE_NAME, &prop, 1, "001");
+        memset(props, 0, sizeof(props));
+
+        strncpy(props[0].key, "BSP_LED", sizeof(props[0].key) - 1);
+        props[0].value_int = 1;
+        props[0].value_type = PLATFORM_MQTT_VALUE_BOOL;
+        prop_count = 1;
+
+        if (dht11_read(&dht11_data) == DHT11_OK)
+        {
+            strncpy(props[1].key, "TEMPERATURE", sizeof(props[1].key) - 1);
+            props[1].value_int = dht11_data.temperature_int;
+            props[1].value_type = PLATFORM_MQTT_VALUE_INT;
+
+            strncpy(props[2].key, "HUMIDITY", sizeof(props[2].key) - 1);
+            props[2].value_int = dht11_data.humidity_int;
+            props[2].value_type = PLATFORM_MQTT_VALUE_INT;
+
+            prop_count = 3;
+            rt_kprintf("  DHT11: Temp=%dC, Humi=%d%%\n",
+                       dht11_data.temperature_int, dht11_data.humidity_int);
+        }
+        else
+        {
+            rt_kprintf("  DHT11 read failed, publishing BSP_LED only\n");
+        }
+
+        ret = MQTT_PUBLISH_PROPERTY(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID,
+                                    ONENET_PRODUCT_ID, ONENET_DEVICE_NAME,
+                                    props, prop_count, "001");
         if (ret == PLATFORM_MQTT_OK)
-            rt_kprintf("Publish OK!\n");
+            rt_kprintf("Publish OK! (%d properties)\n", prop_count);
         else
             rt_kprintf("Publish FAILED! (error=%d)\n", ret);
     }

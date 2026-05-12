@@ -23,9 +23,18 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <string.h>
 #include "rtthread.h"
 #include "oled.h"
 #include "esp8266_init.h"
+#include "dht11.h"
+#include "platform_mqtt.h"
+#include "esp8266_config.h"
+
+#define DHT11_UPLOAD_ENABLED 1
+#define DHT11_UPLOAD_INTERVAL 3600
+#define MQTT_AUTO_CONNECT 1
+#define MQTT_RECONNECT_INTERVAL 10000
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -50,12 +59,17 @@ uint8_t t = ' ';
 
 static rt_thread_t led_thread = RT_NULL;
 static rt_thread_t oled_thread = RT_NULL;
+static rt_thread_t dht11_thread = RT_NULL;
+static rt_thread_t mqtt_thread = RT_NULL;
+
+static dht11_data_t g_dht11_data;
+static uint8_t g_dht11_valid = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
-
+static void dwt_init(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -116,6 +130,149 @@ static void oled_thread_entry(void *parameter)
   }
 }
 
+static void dht11_thread_entry(void *parameter)
+{
+  rt_thread_mdelay(3000);
+  while (1)
+  {
+    platform_mqtt_property_t props[3];
+    dht11_data_t dht11_data;
+    int prop_count = 0;
+    int16_t ret;
+
+    memset(props, 0, sizeof(props));
+
+    strncpy(props[0].key, "BSP_LED", sizeof(props[0].key) - 1);
+    props[0].value_int = 1;
+    props[0].value_type = PLATFORM_MQTT_VALUE_BOOL;
+    prop_count = 1;
+
+    if (dht11_read(&dht11_data) == DHT11_OK)
+    {
+      strncpy(props[1].key, "TEMPERATURE", sizeof(props[1].key) - 1);
+      props[1].value_int = dht11_data.temperature_int;
+      props[1].value_type = PLATFORM_MQTT_VALUE_INT;
+
+      strncpy(props[2].key, "HUMIDITY", sizeof(props[2].key) - 1);
+      props[2].value_int = dht11_data.humidity_int;
+      props[2].value_type = PLATFORM_MQTT_VALUE_INT;
+
+      prop_count = 3;
+      rt_kprintf("  DHT11: Temp=%dC, Humi=%d%%\n",
+                 dht11_data.temperature_int, dht11_data.humidity_int);
+    }
+    else
+    {
+      rt_kprintf("  DHT11 read failed, publishing BSP_LED only\n");
+    }
+
+    ret = MQTT_PUBLISH_PROPERTY(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID,
+                                ONENET_PRODUCT_ID, ONENET_DEVICE_NAME,
+                                props, prop_count, "001");
+    if (ret == PLATFORM_MQTT_OK)
+      rt_kprintf("Publish OK! (%d properties)\n", prop_count);
+    else
+      rt_kprintf("Publish FAILED! (error=%d)\n", ret);
+
+    rt_thread_mdelay(DHT11_UPLOAD_INTERVAL);
+  }
+}
+
+static int mqtt_do_connect(void)
+{
+  platform_mqtt_user_config_t config;
+  int16_t ret;
+
+  memset(&config, 0, sizeof(config));
+  strncpy(config.client_id, ONENET_DEVICE_NAME, sizeof(config.client_id) - 1);
+  strncpy(config.username, ONENET_PRODUCT_ID, sizeof(config.username) - 1);
+  strncpy(config.password, ONENET_MQTT_TOKEN, sizeof(config.password) - 1);
+
+  ret = MQTT_USERCFG(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID, &config);
+  if (ret != PLATFORM_MQTT_OK)
+  {
+    rt_kprintf("MQTT config FAILED!\n");
+    return -1;
+  }
+
+  ret = MQTT_CONNECT(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID,
+                     ONENET_MQTT_HOST, ONENET_MQTT_PORT, 1);
+  if (ret != PLATFORM_MQTT_OK)
+  {
+    rt_kprintf("MQTT connect FAILED!\n");
+    return -1;
+  }
+
+  rt_kprintf("MQTT connected!\n");
+  return 0;
+}
+
+static void mqtt_do_subscribe(void)
+{
+  MQTT_SUBSCRIBE(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID,
+                 ONENET_TOPIC_PROPERTY_POST_REPLY, 1);
+  MQTT_SUBSCRIBE(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID,
+                 ONENET_TOPIC_PROPERTY_SET, 1);
+  MQTT_SUBSCRIBE(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID,
+                 ONENET_TOPIC_PROPERTY_GET, 1);
+  MQTT_SUBSCRIBE(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID,
+                 ONENET_TOPIC_OTA_INFORM, 1);
+  rt_kprintf("MQTT subscribed!\n");
+}
+
+static void mqtt_thread_entry(void *parameter)
+{
+  rt_thread_mdelay(200);
+
+  while (1)
+  {
+    if (MQTT_CHECK_CONNECTED(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID) != PLATFORM_MQTT_OK)
+    {
+      rt_kprintf("MQTT not connected, checking WiFi...\n");
+
+      if (WIFI_AT_TEST(&g_esp8266_wifi.base) != PLATFORM_WIFI_OK)
+      {
+        rt_kprintf("ESP8266 AT test FAILED! Retrying...\n");
+        rt_thread_mdelay(MQTT_RECONNECT_INTERVAL);
+        continue;
+      }
+
+      char ip_buf[64];
+      if (WIFI_GET_IP(&g_esp8266_wifi.base, ip_buf, sizeof(ip_buf)) != PLATFORM_WIFI_OK)
+      {
+        rt_kprintf("WiFi not connected, reconnecting...\n");
+        int16_t wifi_ret = WIFI_JOIN_AP(&g_esp8266_wifi.base,
+                                        ESP8266_WIFI_SSID,
+                                        ESP8266_WIFI_PASSWORD);
+        if (wifi_ret != PLATFORM_WIFI_OK)
+        {
+          rt_kprintf("WiFi reconnect FAILED! (error=%d)\n", wifi_ret);
+          rt_thread_mdelay(MQTT_RECONNECT_INTERVAL);
+          continue;
+        }
+        rt_kprintf("WiFi reconnected!\n");
+        rt_thread_mdelay(1000);
+      }
+      else
+      {
+        rt_kprintf("WiFi connected (IP: %s)\n", ip_buf);
+      }
+
+      rt_kprintf("Trying MQTT connect...\n");
+      if (mqtt_do_connect() == 0)
+      {
+        mqtt_do_subscribe();
+      }
+    }
+    else
+    {
+      rt_kprintf("MQTT status: connected\n");
+    }
+
+    rt_thread_mdelay(MQTT_RECONNECT_INTERVAL);
+  }
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -146,6 +303,7 @@ int main(void)
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
+  dwt_init();
   OLED_Init();
   OLED_Clear();
   OLED_DisplayTurn(0);
@@ -160,8 +318,8 @@ int main(void)
                                 led_thread_entry,
                                 RT_NULL,
                                 128,
-                                20,
-                                20);
+                                21,
+                                10);
   if (led_thread != RT_NULL)
     rt_thread_startup(led_thread);
 
@@ -170,9 +328,29 @@ int main(void)
                                  RT_NULL,
                                  256,
                                  21,
-                                 20);
+                                 10);
   if (oled_thread != RT_NULL)
     rt_thread_startup(oled_thread);
+
+  dht11_thread = rt_thread_create("dht11",
+                                  dht11_thread_entry,
+                                  RT_NULL,
+                                  1024,
+                                  21,
+                                  25);
+  if (dht11_thread != RT_NULL)
+    rt_thread_startup(dht11_thread);
+
+#if MQTT_AUTO_CONNECT
+  mqtt_thread = rt_thread_create("mqtt",
+                                 mqtt_thread_entry,
+                                 RT_NULL,
+                                 1024,
+                                 20,
+                                 20);
+  if (mqtt_thread != RT_NULL)
+    rt_thread_startup(mqtt_thread);
+#endif
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -226,6 +404,30 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+#define DWT_CYCCNT ((volatile uint32_t *)0xE0001004)
+#define DWT_CONTROL ((volatile uint32_t *)0xE0001000)
+#define DEM_CR ((volatile uint32_t *)0xE000EDFC)
+
+#define DEM_CR_TRCENA (1 << 24)
+#define DWT_CR_CYCCNTENA (1 << 0)
+
+static void dwt_init(void)
+{
+  *DEM_CR |= DEM_CR_TRCENA;
+  *DWT_CYCCNT = 0;
+  *DWT_CONTROL |= DWT_CR_CYCCNTENA;
+}
+
+void rt_hw_us_delay(rt_uint32_t us)
+{
+  rt_uint32_t start = *DWT_CYCCNT;
+  rt_uint32_t cycles = us * (SystemCoreClock / 1000000);
+
+  while ((*DWT_CYCCNT - start) < cycles)
+  {
+  }
+}
 
 /* USER CODE END 4 */
 

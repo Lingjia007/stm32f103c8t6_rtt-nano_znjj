@@ -29,6 +29,7 @@ stm32f103c8t6_znjj/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h \
   ..\Core\Inc\usart.h ..\Core\Inc\gpio.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\string.h \
   ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtthread.h \
   ..\RT-Thread\rtconfig.h \
   ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\components\finsh\inc\finsh_config.h \
@@ -42,4 +43,5 @@ stm32f103c8t6_znjj/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\ESP8266\esp8266_init.h ..\ESP8266\platform_wifi_esp8266_impl.h \
   ..\ESP8266\platform_wifi.h ..\ESP8266\platform_uart.h \
   ..\ESP8266\platform_mqtt_esp8266_impl.h ..\ESP8266\platform_mqtt.h \
-  ..\ESP8266\platform_uart_stm32_impl.h
+  ..\ESP8266\platform_uart_stm32_impl.h ..\DHT11\dht11.h \
+  ..\ESP8266\esp8266_config.h

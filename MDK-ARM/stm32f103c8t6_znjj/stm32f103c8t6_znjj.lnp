@@ -29,6 +29,7 @@
 "stm32f103c8t6_znjj\platform_uart_stm32_impl.o"
 "stm32f103c8t6_znjj\platform_wifi_esp8266_impl.o"
 "stm32f103c8t6_znjj\esp8266_test.o"
+"stm32f103c8t6_znjj\dht11.o"
 "stm32f103c8t6_znjj\cmd.o"
 "stm32f103c8t6_znjj\msh.o"
 "stm32f103c8t6_znjj\msh_file.o"

@@ -3,5 +3,6 @@
         "*.py": "python",
         "*.c": "c",
         "usart.h": "c"
-    }
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }

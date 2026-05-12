@@ -1,28 +1,12 @@
-stm32f103c8t6_znjj/esp8266_test.o: ..\ESP8266\esp8266_test.c \
-  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtthread.h \
-  ..\RT-Thread\rtconfig.h \
-  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\components\finsh\inc\finsh_config.h \
-  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtdebug.h \
-  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtdef.h \
-  C:\Keil_v5\ARM\ARMCLANG\include\stdarg.h \
-  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtservice.h \
-  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtm.h \
-  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\components\finsh\inc\finsh.h \
-  C:\Keil_v5\ARM\ARMCLANG\include\stdio.h \
-  C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h \
-  C:\Keil_v5\ARM\ARMCLANG\include\string.h ..\ESP8266\esp8266_init.h \
-  ..\ESP8266\platform_wifi_esp8266_impl.h ..\ESP8266\platform_wifi.h \
-  C:\Keil_v5\ARM\ARMCLANG\include\stdint.h \
-  C:\Keil_v5\ARM\ARMCLANG\include\stddef.h ..\ESP8266\platform_uart.h \
-  ..\ESP8266\platform_mqtt_esp8266_impl.h ..\ESP8266\platform_mqtt.h \
-  ..\ESP8266\platform_uart_stm32_impl.h \
-  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h \
+stm32f103c8t6_znjj/dht11.o: ..\DHT11\dht11.c ..\DHT11\dht11.h \
+  ..\Core\Inc\main.h ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h \
   ..\Core\Inc\stm32f1xx_hal_conf.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h \
   ..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h \
   ..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f103xb.h \
   ..\Drivers\CMSIS\Include\core_cm3.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdint.h \
   d:\edgedownload\stm32f103c8t6_znjj\Drivers\CMSIS\Include\cmsis_version.h \
   d:\edgedownload\stm32f103c8t6_znjj\Drivers\CMSIS\Include\cmsis_compiler.h \
   d:\edgedownload\stm32f103c8t6_znjj\Drivers\CMSIS\Include\cmsis_armclang.h \
@@ -30,6 +14,7 @@ stm32f103c8t6_znjj/esp8266_test.o: ..\ESP8266\esp8266_test.c \
   C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h \
   ..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\system_stm32f1xx.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stddef.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h \
@@ -43,4 +28,13 @@ stm32f103c8t6_znjj/esp8266_test.o: ..\ESP8266\esp8266_test.c \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h \
-  ..\ESP8266\esp8266_config.h ..\DHT11\dht11.h ..\Core\Inc\main.h
+  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtthread.h \
+  ..\RT-Thread\rtconfig.h \
+  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\components\finsh\inc\finsh_config.h \
+  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtdebug.h \
+  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtdef.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdarg.h \
+  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtservice.h \
+  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtm.h \
+  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\components\finsh\inc\finsh.h \
+  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rthw.h
