@@ -34,8 +34,6 @@
 #define DHT11_UPLOAD_ENABLED 1
 #define DHT11_UPLOAD_INTERVAL 5000
 #define DHT11_READ_RETRY 3
-#define MQTT_AUTO_CONNECT 1
-#define MQTT_RECONNECT_INTERVAL 30000
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -61,7 +59,6 @@ uint8_t t = ' ';
 static rt_thread_t led_thread = RT_NULL;
 static rt_thread_t oled_thread = RT_NULL;
 static rt_thread_t dht11_thread = RT_NULL;
-static rt_thread_t mqtt_thread = RT_NULL;
 
 static rt_mutex_t g_esp8266_mutex = RT_NULL;
 
@@ -252,67 +249,60 @@ static void mqtt_do_subscribe(void)
   rt_kprintf("MQTT subscribed!\n");
 }
 
-static void mqtt_thread_entry(void *parameter)
+static int mqtt_init(void)
 {
-  rt_thread_mdelay(200);
+  int16_t ret;
+  char ip_buf[64];
 
-  while (1)
+  rt_kprintf("Checking MQTT connection...\n");
+
+  if (MQTT_CHECK_CONNECTED(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID) == PLATFORM_MQTT_OK)
   {
-    rt_mutex_take(g_esp8266_mutex, RT_WAITING_FOREVER);
-
-    if (MQTT_CHECK_CONNECTED(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID) != PLATFORM_MQTT_OK)
-    {
-      rt_kprintf("MQTT not connected, checking WiFi...\n");
-
-      if (WIFI_AT_TEST(&g_esp8266_wifi.base) != PLATFORM_WIFI_OK)
-      {
-        rt_kprintf("ESP8266 AT test FAILED! Retrying...\n");
-        rt_mutex_release(g_esp8266_mutex);
-        rt_thread_mdelay(MQTT_RECONNECT_INTERVAL);
-        continue;
-      }
-
-      char ip_buf[64];
-      if (WIFI_GET_IP(&g_esp8266_wifi.base, ip_buf, sizeof(ip_buf)) != PLATFORM_WIFI_OK)
-      {
-        rt_kprintf("WiFi not connected, reconnecting...\n");
-        int16_t wifi_ret = WIFI_JOIN_AP(&g_esp8266_wifi.base,
-                                        ESP8266_WIFI_SSID,
-                                        ESP8266_WIFI_PASSWORD);
-        if (wifi_ret != PLATFORM_WIFI_OK)
-        {
-          rt_kprintf("WiFi reconnect FAILED! (error=%d)\n", wifi_ret);
-          rt_mutex_release(g_esp8266_mutex);
-          rt_thread_mdelay(MQTT_RECONNECT_INTERVAL);
-          continue;
-        }
-        rt_kprintf("WiFi reconnected!\n");
-        rt_thread_mdelay(1000);
-      }
-      else
-      {
-        rt_kprintf("WiFi connected (IP: %s)\n", ip_buf);
-      }
-
-      rt_kprintf("Trying MQTT connect...\n");
-      if (mqtt_do_connect() == 0)
-      {
-        mqtt_do_subscribe();
-      }
-    }
-
-    rt_mutex_release(g_esp8266_mutex);
-
-    rt_thread_mdelay(MQTT_RECONNECT_INTERVAL);
+    rt_kprintf("MQTT already connected!\n");
+    return 0;
   }
+
+  rt_kprintf("MQTT not connected, checking WiFi...\n");
+
+  if (WIFI_AT_TEST(&g_esp8266_wifi.base) != PLATFORM_WIFI_OK)
+  {
+    rt_kprintf("ESP8266 AT test FAILED!\n");
+    return -1;
+  }
+
+  if (WIFI_GET_IP(&g_esp8266_wifi.base, ip_buf, sizeof(ip_buf)) != PLATFORM_WIFI_OK)
+  {
+    rt_kprintf("WiFi not connected, connecting...\n");
+    ret = WIFI_JOIN_AP(&g_esp8266_wifi.base, ESP8266_WIFI_SSID, ESP8266_WIFI_PASSWORD);
+    if (ret != PLATFORM_WIFI_OK)
+    {
+      rt_kprintf("WiFi connect FAILED! (error=%d)\n", ret);
+      return -1;
+    }
+    rt_kprintf("WiFi connected!\n");
+    rt_thread_mdelay(1000);
+  }
+  else
+  {
+    rt_kprintf("WiFi already connected (IP: %s)\n", ip_buf);
+  }
+
+  rt_kprintf("Connecting MQTT...\n");
+  if (mqtt_do_connect() != 0)
+  {
+    return -1;
+  }
+
+  mqtt_do_subscribe();
+  return 0;
 }
 
 /* USER CODE END 0 */
 
 /**
- * @brief  The application entry point.
- * @retval int
- */
+  * @brief  The application entry point.
+  * @retval int
+  */
 int main(void)
 {
 
@@ -350,6 +340,17 @@ int main(void)
 
   g_esp8266_mutex = rt_mutex_create("esp8266", RT_IPC_FLAG_PRIO);
 
+  rt_mutex_take(g_esp8266_mutex, RT_WAITING_FOREVER);
+  if (mqtt_init() == 0)
+  {
+    rt_kprintf("MQTT init success!\n");
+  }
+  else
+  {
+    rt_kprintf("MQTT init failed!\n");
+  }
+  rt_mutex_release(g_esp8266_mutex);
+
   led_thread = rt_thread_create("led",
                                 led_thread_entry,
                                 RT_NULL,
@@ -377,16 +378,6 @@ int main(void)
   if (dht11_thread != RT_NULL)
     rt_thread_startup(dht11_thread);
 
-#if MQTT_AUTO_CONNECT
-  mqtt_thread = rt_thread_create("mqtt",
-                                 mqtt_thread_entry,
-                                 RT_NULL,
-                                 1536,
-                                 21,
-                                 20);
-  if (mqtt_thread != RT_NULL)
-    rt_thread_startup(mqtt_thread);
-#endif
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -402,17 +393,17 @@ int main(void)
 }
 
 /**
- * @brief System Clock Configuration
- * @retval None
- */
+  * @brief System Clock Configuration
+  * @retval None
+  */
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
   /** Initializes the RCC Oscillators according to the specified parameters
-   * in the RCC_OscInitTypeDef structure.
-   */
+  * in the RCC_OscInitTypeDef structure.
+  */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
@@ -426,8 +417,9 @@ void SystemClock_Config(void)
   }
 
   /** Initializes the CPU, AHB and APB buses clocks
-   */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
+  */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
@@ -468,13 +460,13 @@ void rt_hw_us_delay(rt_uint32_t us)
 /* USER CODE END 4 */
 
 /**
- * @brief  Period elapsed callback in non blocking mode
- * @note   This function is called  when TIM4 interrupt took place, inside
- * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
- * a global variable "uwTick" used as application time base.
- * @param  htim : TIM handle
- * @retval None
- */
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM4 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   /* USER CODE BEGIN Callback 0 */
@@ -490,9 +482,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 }
 
 /**
- * @brief  This function is executed in case of error occurrence.
- * @retval None
- */
+  * @brief  This function is executed in case of error occurrence.
+  * @retval None
+  */
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
@@ -505,12 +497,12 @@ void Error_Handler(void)
 }
 #ifdef USE_FULL_ASSERT
 /**
- * @brief  Reports the name of the source file and the source line number
- *         where the assert_param error has occurred.
- * @param  file: pointer to the source file name
- * @param  line: assert_param error line source number
- * @retval None
- */
+  * @brief  Reports the name of the source file and the source line number
+  *         where the assert_param error has occurred.
+  * @param  file: pointer to the source file name
+  * @param  line: assert_param error line source number
+  * @retval None
+  */
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */
