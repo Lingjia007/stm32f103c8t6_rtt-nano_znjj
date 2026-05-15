@@ -988,6 +988,16 @@
               <FileType>1</FileType>
               <FilePath>..\ESP8266\esp8266_test.c</FilePath>
             </File>
+            <File>
+              <FileName>onenet_cmd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ESP8266\onenet_cmd.c</FilePath>
+            </File>
+            <File>
+              <FileName>onenet_kv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ESP8266\onenet_kv.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1019,9 +1029,6 @@
               <FilePath>..\PIR_Sensor\pir_sensor.c</FilePath>
             </File>
           </Files>
-        </Group>
-        <Group>
-          <GroupName>::CMSIS</GroupName>
         </Group>
         <Group>
           <GroupName>Middlewares/RT-Thread/RTOS/shell</GroupName>
@@ -2575,6 +2582,9 @@
               </FileOption>
             </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>::CMSIS</GroupName>
         </Group>
       </Groups>
     </Target>

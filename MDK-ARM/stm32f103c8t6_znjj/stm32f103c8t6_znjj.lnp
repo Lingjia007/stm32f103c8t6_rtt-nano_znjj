@@ -32,6 +32,8 @@
 "stm32f103c8t6_znjj\platform_uart_stm32_impl.o"
 "stm32f103c8t6_znjj\platform_wifi_esp8266_impl.o"
 "stm32f103c8t6_znjj\esp8266_test.o"
+"stm32f103c8t6_znjj\onenet_cmd.o"
+"stm32f103c8t6_znjj\onenet_kv.o"
 "stm32f103c8t6_znjj\dht11.o"
 "stm32f103c8t6_znjj\light_sensor.o"
 "stm32f103c8t6_znjj\pir_sensor.o"

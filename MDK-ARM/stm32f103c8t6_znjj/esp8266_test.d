@@ -45,4 +45,5 @@ stm32f103c8t6_znjj/esp8266_test.o: ..\ESP8266\esp8266_test.c \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h \
-  ..\ESP8266\esp8266_config.h ..\DHT11\dht11.h ..\Core\Inc\main.h
+  ..\ESP8266\esp8266_config.h ..\DHT11\dht11.h ..\Core\Inc\main.h \
+  ..\ESP8266\onenet_kv.h

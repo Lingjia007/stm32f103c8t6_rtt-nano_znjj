@@ -33,6 +33,8 @@
 #include "esp8266_config.h"
 #include "light_sensor.h"
 #include "pir_sensor.h"
+#include "onenet_kv.h"
+#include "onenet_cmd.h"
 
 #define DHT11_UPLOAD_ENABLED 1
 #define DHT11_UPLOAD_INTERVAL 3600
@@ -64,29 +66,72 @@ static rt_thread_t oled_thread = RT_NULL;
 static rt_thread_t dht11_thread = RT_NULL;
 static rt_thread_t light_sensor_thread = RT_NULL;
 static rt_thread_t pir_sensor_thread = RT_NULL;
+static rt_thread_t mqtt_cmd_thread = RT_NULL;
 
 static rt_mutex_t g_esp8266_mutex = RT_NULL;
 
 static uint8_t g_mqtt_configured = 0;
+static uint8_t g_mqtt_connected = 0;
 
 static dht11_data_t g_dht11_data;
 static uint8_t g_dht11_valid = 0;
+
+onenet_kv_table_t g_kv_table;
+onenet_cmd_ctx_t g_cmd_ctx;
+
+static int g_kv_temperature = 0;
+static int g_kv_humidity = 0;
+static int g_kv_light = 0;
+static uint8_t g_kv_bsp_led = 1;
+static char g_kv_pir[ONENET_KV_MAX_STRING_LEN] = "not_detected";
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
 static void dwt_init(void);
+static int mqtt_reconnect(void);
+static void onenet_kv_table_setup(void);
+static void bsp_led_on_change(const char *key, void *value, uint8_t value_type);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+static void bsp_led_on_change(const char *key, void *value, uint8_t value_type)
+{
+  uint8_t led_val = *((uint8_t *)value);
+  rt_kprintf("BSP_LED changed -> %d (%s)\n", led_val, led_val ? "blink" : "off");
+}
+
+static void onenet_kv_table_setup(void)
+{
+  onenet_kv_init(&g_kv_table);
+
+  onenet_kv_register(&g_kv_table, "TEMPERATURE",
+                     PLATFORM_MQTT_VALUE_INT, &g_kv_temperature, NULL);
+  onenet_kv_register(&g_kv_table, "HUMIDITY",
+                     PLATFORM_MQTT_VALUE_INT, &g_kv_humidity, NULL);
+  onenet_kv_register(&g_kv_table, "LIGHT",
+                     PLATFORM_MQTT_VALUE_INT, &g_kv_light, NULL);
+  onenet_kv_register(&g_kv_table, "BSP_LED",
+                     PLATFORM_MQTT_VALUE_BOOL, &g_kv_bsp_led, bsp_led_on_change);
+  onenet_kv_register(&g_kv_table, "PIR",
+                     PLATFORM_MQTT_VALUE_STRING, g_kv_pir, NULL);
+
+  onenet_cmd_init(&g_cmd_ctx, &g_kv_table,
+                  &g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID,
+                  ONENET_PRODUCT_ID, ONENET_DEVICE_NAME);
+}
+
 static void led_thread_entry(void *parameter)
 {
   while (1)
   {
-    HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+    if (g_kv_bsp_led)
+      HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+    else
+      HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
     rt_thread_mdelay(500);
   }
 }
@@ -142,7 +187,7 @@ static void dht11_thread_entry(void *parameter)
   rt_thread_mdelay(3000);
   while (1)
   {
-    platform_mqtt_property_t props[3];
+    platform_mqtt_property_t props[2];
     dht11_data_t dht11_data;
     int prop_count = 0;
     int16_t ret;
@@ -162,40 +207,46 @@ static void dht11_thread_entry(void *parameter)
 
     memset(props, 0, sizeof(props));
 
-    strncpy(props[0].key, "BSP_LED", sizeof(props[0].key) - 1);
-    props[0].value_int = 1;
-    props[0].value_type = PLATFORM_MQTT_VALUE_BOOL;
-    prop_count = 1;
-
     if (dht11_ok)
     {
-      strncpy(props[1].key, "TEMPERATURE", sizeof(props[1].key) - 1);
-      props[1].value_int = dht11_data.temperature_int;
+      g_kv_temperature = dht11_data.temperature_int;
+      g_kv_humidity = dht11_data.humidity_int;
+
+      strncpy(props[0].key, "TEMPERATURE", sizeof(props[0].key) - 1);
+      props[0].value_int = g_kv_temperature;
+      props[0].value_type = PLATFORM_MQTT_VALUE_INT;
+
+      strncpy(props[1].key, "HUMIDITY", sizeof(props[1].key) - 1);
+      props[1].value_int = g_kv_humidity;
       props[1].value_type = PLATFORM_MQTT_VALUE_INT;
 
-      strncpy(props[2].key, "HUMIDITY", sizeof(props[2].key) - 1);
-      props[2].value_int = dht11_data.humidity_int;
-      props[2].value_type = PLATFORM_MQTT_VALUE_INT;
-
-      prop_count = 3;
+      prop_count = 2;
       rt_kprintf("  DHT11: Temp=%dC, Humi=%d%%\n",
-                 dht11_data.temperature_int, dht11_data.humidity_int);
+                 g_kv_temperature, g_kv_humidity);
     }
     else
     {
       rt_kprintf("  DHT11 read failed after %d retries\n", DHT11_READ_RETRY);
     }
 
-    rt_mutex_take(g_esp8266_mutex, RT_WAITING_FOREVER);
-    ret = MQTT_PUBLISH_PROPERTY(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID,
-                                ONENET_PRODUCT_ID, ONENET_DEVICE_NAME,
-                                props, prop_count, "001");
-    rt_mutex_release(g_esp8266_mutex);
+    if (!g_mqtt_connected)
+    {
+      mqtt_reconnect();
+    }
 
-    if (ret == PLATFORM_MQTT_OK)
-      rt_kprintf("Publish OK! (%d properties)\n", prop_count);
-    else
-      rt_kprintf("Publish FAILED! (error=%d)\n", ret);
+    if (prop_count > 0 && g_mqtt_connected)
+    {
+      rt_mutex_take(g_esp8266_mutex, RT_WAITING_FOREVER);
+      ret = MQTT_PUBLISH_PROPERTY(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID,
+                                  ONENET_PRODUCT_ID, ONENET_DEVICE_NAME,
+                                  props, prop_count, "001");
+      rt_mutex_release(g_esp8266_mutex);
+
+      if (ret == PLATFORM_MQTT_OK)
+        rt_kprintf("DHT11 Publish OK! (%d properties)\n", prop_count);
+      else
+        rt_kprintf("DHT11 Publish FAILED! (error=%d)\n", ret);
+    }
 
     rt_thread_mdelay(DHT11_UPLOAD_INTERVAL);
   }
@@ -205,6 +256,8 @@ static void light_sensor_thread_entry(void *parameter)
 {
   uint16_t adc_raw;
   uint8_t light_percentage;
+  platform_mqtt_property_t prop;
+  int16_t ret;
 
   rt_thread_mdelay(1000);
   light_sensor_init();
@@ -216,13 +269,41 @@ static void light_sensor_thread_entry(void *parameter)
 
     rt_kprintf("Light Sensor: Raw=%d, Percentage=%d%%\n", adc_raw, light_percentage);
 
-    rt_thread_mdelay(1000);
+    g_kv_light = light_percentage;
+
+    if (!g_mqtt_connected)
+    {
+      mqtt_reconnect();
+    }
+
+    if (g_mqtt_connected)
+    {
+      memset(&prop, 0, sizeof(prop));
+      strncpy(prop.key, "LIGHT", sizeof(prop.key) - 1);
+      prop.value_int = g_kv_light;
+      prop.value_type = PLATFORM_MQTT_VALUE_INT;
+
+      rt_mutex_take(g_esp8266_mutex, RT_WAITING_FOREVER);
+      ret = MQTT_PUBLISH_PROPERTY(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID,
+                                  ONENET_PRODUCT_ID, ONENET_DEVICE_NAME,
+                                  &prop, 1, "002");
+      rt_mutex_release(g_esp8266_mutex);
+
+      if (ret == PLATFORM_MQTT_OK)
+        rt_kprintf("Light Publish OK!\n");
+      else
+        rt_kprintf("Light Publish FAILED! (error=%d)\n", ret);
+    }
+
+    rt_thread_mdelay(5000);
   }
 }
 
 static void pir_sensor_thread_entry(void *parameter)
 {
   uint8_t pir_status;
+  platform_mqtt_property_t prop;
+  int16_t ret;
 
   rt_thread_mdelay(1500);
   pir_sensor_init();
@@ -234,13 +315,106 @@ static void pir_sensor_thread_entry(void *parameter)
     if (pir_status == PIR_DETECTED)
     {
       rt_kprintf("PIR Sensor: Detected! (Someone is here)\n");
+      strncpy(g_kv_pir, "detected", sizeof(g_kv_pir) - 1);
     }
     else
     {
       rt_kprintf("PIR Sensor: Not detected (No one)\n");
+      strncpy(g_kv_pir, "not_detected", sizeof(g_kv_pir) - 1);
     }
 
-    rt_thread_mdelay(1500);
+    if (!g_mqtt_connected)
+    {
+      mqtt_reconnect();
+    }
+
+    if (g_mqtt_connected)
+    {
+      memset(&prop, 0, sizeof(prop));
+      strncpy(prop.key, "PIR", sizeof(prop.key) - 1);
+      strncpy(prop.id, g_kv_pir, sizeof(prop.id) - 1);
+      prop.value_type = PLATFORM_MQTT_VALUE_STRING;
+
+      rt_mutex_take(g_esp8266_mutex, RT_WAITING_FOREVER);
+      ret = MQTT_PUBLISH_PROPERTY(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID,
+                                  ONENET_PRODUCT_ID, ONENET_DEVICE_NAME,
+                                  &prop, 1, "003");
+      rt_mutex_release(g_esp8266_mutex);
+
+      if (ret == PLATFORM_MQTT_OK)
+        rt_kprintf("PIR Publish OK!\n");
+      else
+        rt_kprintf("PIR Publish FAILED! (error=%d)\n", ret);
+    }
+
+    rt_thread_mdelay(3000);
+  }
+}
+
+static void mqtt_cmd_thread_entry(void *parameter)
+{
+  static char recv_topic[PLATFORM_MQTT_MAX_TOPIC_LEN];
+  static char recv_payload[PLATFORM_MQTT_MAX_PAYLOAD_LEN];
+  static char recv_msg_id[32];
+
+  rt_thread_mdelay(4000);
+  rt_kprintf("[mqtt_cmd] Listening thread started\n");
+
+  while (1)
+  {
+    if (!g_mqtt_connected)
+    {
+      rt_thread_mdelay(100);
+      continue;
+    }
+
+    if (g_esp8266_mqtt.wifi->rx_frame.sta.finsh == 0)
+    {
+      rt_thread_mdelay(10);
+      continue;
+    }
+
+    memset(recv_topic, 0, sizeof(recv_topic));
+    memset(recv_payload, 0, sizeof(recv_payload));
+    memset(recv_msg_id, 0, sizeof(recv_msg_id));
+
+    rt_mutex_take(g_esp8266_mutex, RT_WAITING_FOREVER);
+    int16_t recv_ret = MQTT_CHECK_PROPERTY_SET_RECV(&g_esp8266_mqtt.base,
+                                                    recv_topic, recv_payload,
+                                                    sizeof(recv_payload), recv_msg_id);
+    wifi_esp8266_rx_restart(g_esp8266_mqtt.wifi);
+    rt_mutex_release(g_esp8266_mutex);
+
+    if (recv_ret != PLATFORM_MQTT_OK)
+      continue;
+
+    if (strcmp(recv_topic, ONENET_TOPIC_PROPERTY_POST_REPLY) == 0)
+      continue;
+
+    rt_kprintf("[mqtt_cmd] Recv: topic=%s\n", recv_topic);
+    rt_kprintf("[mqtt_cmd] Payload: %s\n", recv_payload);
+
+    if (strcmp(recv_topic, ONENET_TOPIC_PROPERTY_SET) == 0)
+    {
+      int8_t updated = onenet_kv_parse_set_payload(&g_kv_table, recv_payload);
+      rt_kprintf("[mqtt_cmd] SET: %d properties updated\n", updated);
+      rt_kprintf("[mqtt_cmd] BSP_LED=%d, TEMP=%d, HUMI=%d, LIGHT=%d\n",
+                 g_kv_bsp_led, g_kv_temperature, g_kv_humidity, g_kv_light);
+
+      rt_mutex_take(g_esp8266_mutex, RT_WAITING_FOREVER);
+      MQTT_PUBLISH_SET_REPLY(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID,
+                             ONENET_PRODUCT_ID, ONENET_DEVICE_NAME,
+                             recv_msg_id, 200, "user_succ");
+      rt_mutex_release(g_esp8266_mutex);
+    }
+    else if (strcmp(recv_topic, ONENET_TOPIC_PROPERTY_GET) == 0)
+    {
+      rt_kprintf("[mqtt_cmd] GET request received\n");
+    }
+    else if (strcmp(recv_topic, ONENET_TOPIC_OTA_INFORM) == 0)
+    {
+      rt_kprintf("[mqtt_cmd] OTA inform received\n");
+    }
   }
 }
 
@@ -260,7 +434,7 @@ static int mqtt_do_connect(void)
     ret = MQTT_USERCFG(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID, &config);
     if (ret != PLATFORM_MQTT_OK)
     {
-      rt_kprintf("MQTT config FAILED!\n");
+      rt_kprintf("MQTT config FAILED! (error=%d)\n", ret);
       return -1;
     }
     g_mqtt_configured = 1;
@@ -277,9 +451,11 @@ static int mqtt_do_connect(void)
   {
     rt_kprintf("MQTT connect FAILED! resetting config flag\n");
     g_mqtt_configured = 0;
+    g_mqtt_connected = 0;
     return -1;
   }
 
+  g_mqtt_connected = 1;
   rt_kprintf("MQTT connected!\n");
   return 0;
 }
@@ -307,6 +483,7 @@ static int mqtt_init(void)
   if (MQTT_CHECK_CONNECTED(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID) == PLATFORM_MQTT_OK)
   {
     rt_kprintf("MQTT already connected!\n");
+    g_mqtt_connected = 1;
     return 0;
   }
 
@@ -343,6 +520,20 @@ static int mqtt_init(void)
 
   mqtt_do_subscribe();
   return 0;
+}
+
+static int mqtt_reconnect(void)
+{
+  int16_t ret;
+
+  if (g_mqtt_connected)
+    return 0;
+
+  rt_mutex_take(g_esp8266_mutex, RT_WAITING_FOREVER);
+  ret = mqtt_init();
+  rt_mutex_release(g_esp8266_mutex);
+
+  return ret;
 }
 
 /* USER CODE END 0 */
@@ -387,6 +578,8 @@ int main(void)
   esp8266_platform_init();
   esp8266_uart_enable_it();
 
+  onenet_kv_table_setup();
+
   g_esp8266_mutex = rt_mutex_create("esp8266", RT_IPC_FLAG_PRIO);
 
   rt_mutex_take(g_esp8266_mutex, RT_WAITING_FOREVER);
@@ -403,7 +596,7 @@ int main(void)
   led_thread = rt_thread_create("led",
                                 led_thread_entry,
                                 RT_NULL,
-                                128,
+                                96,
                                 24,
                                 10);
   if (led_thread != RT_NULL)
@@ -412,7 +605,7 @@ int main(void)
   oled_thread = rt_thread_create("oled",
                                  oled_thread_entry,
                                  RT_NULL,
-                                 256,
+                                 192,
                                  24,
                                  10);
   if (oled_thread != RT_NULL)
@@ -421,16 +614,16 @@ int main(void)
   dht11_thread = rt_thread_create("dht11",
                                   dht11_thread_entry,
                                   RT_NULL,
-                                  1024,
+                                  768,
                                   20,
-                                  25);
+                                  10);
   if (dht11_thread != RT_NULL)
     rt_thread_startup(dht11_thread);
 
   light_sensor_thread = rt_thread_create("light",
                                          light_sensor_thread_entry,
                                          RT_NULL,
-                                         256,
+                                         640,
                                          22,
                                          10);
   if (light_sensor_thread != RT_NULL)
@@ -439,11 +632,20 @@ int main(void)
   pir_sensor_thread = rt_thread_create("pir",
                                        pir_sensor_thread_entry,
                                        RT_NULL,
-                                       256,
+                                       640,
                                        23,
                                        10);
   if (pir_sensor_thread != RT_NULL)
     rt_thread_startup(pir_sensor_thread);
+
+  mqtt_cmd_thread = rt_thread_create("mqtt_cmd",
+                                     mqtt_cmd_thread_entry,
+                                     RT_NULL,
+                                     768,
+                                     21,
+                                     20);
+  if (mqtt_cmd_thread != RT_NULL)
+    rt_thread_startup(mqtt_cmd_thread);
 
   /* USER CODE END 2 */
 

@@ -47,4 +47,5 @@ stm32f103c8t6_znjj/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\ESP8266\platform_mqtt_esp8266_impl.h ..\ESP8266\platform_mqtt.h \
   ..\ESP8266\platform_uart_stm32_impl.h ..\DHT11\dht11.h \
   ..\ESP8266\esp8266_config.h ..\Light_Sensor\light_sensor.h \
-  ..\PIR_Sensor\pir_sensor.h
+  ..\PIR_Sensor\pir_sensor.h ..\ESP8266\onenet_kv.h \
+  ..\ESP8266\onenet_cmd.h

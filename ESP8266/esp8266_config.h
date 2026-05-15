@@ -7,7 +7,7 @@
 #define ESP8266_MQTT_LINK_ID 0
 
 #ifndef ESP8266_TEST_ENABLED
-#define ESP8266_TEST_ENABLED 1
+#define ESP8266_TEST_ENABLED 0
 #endif
 
 #define ONENET_MQTT_HOST "mqtts.heclouds.com"

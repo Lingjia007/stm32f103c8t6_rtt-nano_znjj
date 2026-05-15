@@ -5,6 +5,8 @@
 #include "esp8266_init.h"
 #include "esp8266_config.h"
 #include "dht11.h"
+#include "onenet_kv.h"
+#include "main.h"
 
 #if ESP8266_TEST_ENABLED && defined(RT_USING_FINSH)
 #include <finsh.h>
@@ -587,5 +589,56 @@ static int mqtt_full_test(int argc, char **argv)
     return 0;
 }
 MSH_CMD_EXPORT(mqtt_full_test, Run full MQTT test sequence);
+
+extern onenet_kv_table_t g_kv_table;
+
+static int kv_list(void)
+{
+    rt_kprintf("OneNet KV Table (%d entries):\n", g_kv_table.count);
+    for (uint8_t i = 0; i < g_kv_table.count; i++)
+    {
+        onenet_kv_entry_t *e = &g_kv_table.entries[i];
+        rt_kprintf("  [%d] key=%-12s type=%d dirty=%d", i, e->key, e->value_type, e->dirty);
+        switch (e->value_type)
+        {
+        case PLATFORM_MQTT_VALUE_INT:
+            rt_kprintf(" value=%d\n", *((int *)e->value_ptr));
+            break;
+        case PLATFORM_MQTT_VALUE_FLOAT:
+            rt_kprintf(" value=%.2f\n", *((float *)e->value_ptr));
+            break;
+        case PLATFORM_MQTT_VALUE_BOOL:
+            rt_kprintf(" value=%s\n", *((uint8_t *)e->value_ptr) ? "true" : "false");
+            break;
+        case PLATFORM_MQTT_VALUE_STRING:
+            rt_kprintf(" value=%s\n", (char *)e->value_ptr);
+            break;
+        default:
+            rt_kprintf(" value=?\n");
+            break;
+        }
+    }
+    return 0;
+}
+MSH_CMD_EXPORT(kv_list, List all OneNet KV entries);
+
+static int kv_set(int argc, char **argv)
+{
+    if (argc < 3)
+    {
+        rt_kprintf("Usage: kv_set <key> <value>\n");
+        rt_kprintf("  Example: kv_set BSP_LED 1\n");
+        rt_kprintf("  Example: kv_set BSP_LED 0\n");
+        return -1;
+    }
+
+    int8_t ret = onenet_kv_set_value(&g_kv_table, argv[1], argv[2]);
+    if (ret == 0)
+        rt_kprintf("Set %s = %s OK\n", argv[1], argv[2]);
+    else
+        rt_kprintf("Set FAILED! (error=%d, key not found?)\n", ret);
+    return (ret == 0) ? 0 : -1;
+}
+MSH_CMD_EXPORT(kv_set, Set OneNet KV value<key><value>);
 
 #endif
