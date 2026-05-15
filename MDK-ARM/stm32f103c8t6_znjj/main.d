@@ -22,13 +22,15 @@ stm32f103c8t6_znjj/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h \
+  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_adc.h \
+  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_adc_ex.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pwr.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h \
-  ..\Core\Inc\usart.h ..\Core\Inc\gpio.h \
+  ..\Core\Inc\adc.h ..\Core\Inc\usart.h ..\Core\Inc\gpio.h \
   C:\Keil_v5\ARM\ARMCLANG\include\string.h \
   ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtthread.h \
   ..\RT-Thread\rtconfig.h \
@@ -44,4 +46,4 @@ stm32f103c8t6_znjj/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\ESP8266\platform_wifi.h ..\ESP8266\platform_uart.h \
   ..\ESP8266\platform_mqtt_esp8266_impl.h ..\ESP8266\platform_mqtt.h \
   ..\ESP8266\platform_uart_stm32_impl.h ..\DHT11\dht11.h \
-  ..\ESP8266\esp8266_config.h
+  ..\ESP8266\esp8266_config.h ..\Light_Sensor\light_sensor.h
