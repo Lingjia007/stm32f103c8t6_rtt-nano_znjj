@@ -15,7 +15,6 @@
                 "C:/Keil_v5/ARM/ARMCLANG/include/libcxx",
                 "C:/Users/31254/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include",
                 "C:/Users/31254/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/RTOS2/Include",
-                "MDK-ARM/RTE/_stm32f103c8t6_znjj",
                 "Core/Inc",
                 "RT-Thread",
                 "Drivers/STM32F1xx_HAL_Driver/Inc/Legacy",
@@ -27,13 +26,13 @@
                 "OLED",
                 "Utils",
                 "ESP8266",
-                "DHT11"
+                "DHT11",
+                "Light_Sensor",
+                "PIR_Sensor"
             ],
             "defines": [
                 "USE_HAL_DRIVER",
                 "STM32F103xB",
-                "RTE_COMPONENTS_H",
-                "CMSIS_device_header=\"stm32f10x.h\"",
                 "__alignof__(x)=",
                 "__asm(x)=",
                 "__asm__(x)=",

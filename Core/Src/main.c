@@ -32,6 +32,7 @@
 #include "platform_mqtt.h"
 #include "esp8266_config.h"
 #include "light_sensor.h"
+#include "pir_sensor.h"
 
 #define DHT11_UPLOAD_ENABLED 1
 #define DHT11_UPLOAD_INTERVAL 3600
@@ -62,6 +63,7 @@ static rt_thread_t led_thread = RT_NULL;
 static rt_thread_t oled_thread = RT_NULL;
 static rt_thread_t dht11_thread = RT_NULL;
 static rt_thread_t light_sensor_thread = RT_NULL;
+static rt_thread_t pir_sensor_thread = RT_NULL;
 
 static rt_mutex_t g_esp8266_mutex = RT_NULL;
 
@@ -215,6 +217,30 @@ static void light_sensor_thread_entry(void *parameter)
     rt_kprintf("Light Sensor: Raw=%d, Percentage=%d%%\n", adc_raw, light_percentage);
 
     rt_thread_mdelay(1000);
+  }
+}
+
+static void pir_sensor_thread_entry(void *parameter)
+{
+  uint8_t pir_status;
+
+  rt_thread_mdelay(1500);
+  pir_sensor_init();
+
+  while (1)
+  {
+    pir_status = pir_sensor_read();
+
+    if (pir_status == PIR_DETECTED)
+    {
+      rt_kprintf("PIR Sensor: Detected! (Someone is here)\n");
+    }
+    else
+    {
+      rt_kprintf("PIR Sensor: Not detected (No one)\n");
+    }
+
+    rt_thread_mdelay(1500);
   }
 }
 
@@ -409,6 +435,15 @@ int main(void)
                                          10);
   if (light_sensor_thread != RT_NULL)
     rt_thread_startup(light_sensor_thread);
+
+  pir_sensor_thread = rt_thread_create("pir",
+                                       pir_sensor_thread_entry,
+                                       RT_NULL,
+                                       256,
+                                       23,
+                                       10);
+  if (pir_sensor_thread != RT_NULL)
+    rt_thread_startup(pir_sensor_thread);
 
   /* USER CODE END 2 */
 
