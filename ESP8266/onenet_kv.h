@@ -5,9 +5,9 @@
 #include <stdint.h>
 #include <stddef.h>
 
-#define ONENET_KV_MAX_KEY_LEN 32
-#define ONENET_KV_MAX_ENTRIES 16
-#define ONENET_KV_MAX_STRING_LEN 32
+#define ONENET_KV_MAX_KEY_LEN 16
+#define ONENET_KV_MAX_ENTRIES 8
+#define ONENET_KV_MAX_STRING_LEN 16
 
 typedef void (*onenet_kv_on_change_t)(const char *key, void *value, uint8_t value_type);
 

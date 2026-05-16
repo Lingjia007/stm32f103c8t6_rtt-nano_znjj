@@ -68,8 +68,7 @@ int8_t onenet_kv_set_value(onenet_kv_table_t *table,
         *((int *)entry->value_ptr) = atoi(value_str);
         break;
     case PLATFORM_MQTT_VALUE_FLOAT:
-        *((float *)entry->value_ptr) = (float)atof(value_str);
-        break;
+        return -3;
     case PLATFORM_MQTT_VALUE_BOOL:
         if (strcmp(value_str, "true") == 0 || strcmp(value_str, "1") == 0)
             *((uint8_t *)entry->value_ptr) = 1;
@@ -114,8 +113,7 @@ int8_t onenet_kv_get_property(onenet_kv_table_t *table,
         prop->value_int = *((int *)entry->value_ptr);
         break;
     case PLATFORM_MQTT_VALUE_FLOAT:
-        prop->value_float = *((float *)entry->value_ptr);
-        break;
+        return -3;
     case PLATFORM_MQTT_VALUE_BOOL:
         prop->value_int = *((uint8_t *)entry->value_ptr) ? 1 : 0;
         break;

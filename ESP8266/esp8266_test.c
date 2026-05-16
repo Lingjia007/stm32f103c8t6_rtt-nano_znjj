@@ -408,7 +408,10 @@ static int mqtt_publish(int argc, char **argv)
         strncpy(msg_id, argv[4], sizeof(msg_id) - 1);
 
     if (prop.value_type == PLATFORM_MQTT_VALUE_FLOAT)
-        prop.value_float = atof(value_buf);
+    {
+        rt_kprintf("FLOAT type not supported\n");
+        return -1;
+    }
     else if (prop.value_type == PLATFORM_MQTT_VALUE_BOOL)
         prop.value_int = (strcmp(value_buf, "true") == 0 || strcmp(value_buf, "1") == 0) ? 1 : 0;
     else if (prop.value_type == PLATFORM_MQTT_VALUE_STRING)
@@ -605,7 +608,7 @@ static int kv_list(void)
             rt_kprintf(" value=%d\n", *((int *)e->value_ptr));
             break;
         case PLATFORM_MQTT_VALUE_FLOAT:
-            rt_kprintf(" value=%.2f\n", *((float *)e->value_ptr));
+            rt_kprintf(" value=N/A (float not supported)\n");
             break;
         case PLATFORM_MQTT_VALUE_BOOL:
             rt_kprintf(" value=%s\n", *((uint8_t *)e->value_ptr) ? "true" : "false");

@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static char g_mqtt_cmd[512];
+static char g_mqtt_cmd[256];
 static char g_mqtt_payload[PLATFORM_MQTT_MAX_PAYLOAD_LEN];
 
 static int16_t esp8266_mqtt_usercfg(void *ctx, uint8_t link_id, const platform_mqtt_user_config_t *config)
@@ -129,9 +129,7 @@ static int16_t esp8266_mqtt_publish_property(void *ctx, uint8_t link_id, const c
                                "\"%s\":{\"value\":%d}", props[i].key, props[i].value_int);
             break;
         case PLATFORM_MQTT_VALUE_FLOAT:
-            offset += snprintf(g_mqtt_payload + offset, sizeof(g_mqtt_payload) - offset,
-                               "\"%s\":{\"value\":%.2f}", props[i].key, props[i].value_float);
-            break;
+            return PLATFORM_MQTT_INVALID_PARAM;
         case PLATFORM_MQTT_VALUE_BOOL:
             offset += snprintf(g_mqtt_payload + offset, sizeof(g_mqtt_payload) - offset,
                                "\"%s\":{\"value\":%s}", props[i].key, props[i].value_int ? "true" : "false");

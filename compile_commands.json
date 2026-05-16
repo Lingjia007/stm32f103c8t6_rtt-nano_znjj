@@ -22966,5 +22966,841 @@
             "-o",
             "build/stm32f103c8t6_znjj/PIR_Sensor/pir_sensor.o"
         ]
+    },
+    {
+        "directory": "MDK-ARM",
+        "file": "MDK-ARM/startup_stm32f103xb.s",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "MDK-ARM/startup_stm32f103xb.s",
+            "-o",
+            "build/stm32f103c8t6_znjj/MDK-ARM/startup_stm32f103xb.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/main.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/main.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/main.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/gpio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/gpio.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/gpio.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/adc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/adc.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/adc.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/usart.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/usart.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/usart.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f1xx_it.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/stm32f1xx_it.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/stm32f1xx_it.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f1xx_hal_msp.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/stm32f1xx_hal_msp.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/stm32f1xx_hal_msp.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f1xx_hal_timebase_tim.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/stm32f1xx_hal_timebase_tim.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/stm32f1xx_hal_timebase_tim.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/system_stm32f1xx.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/system_stm32f1xx.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/system_stm32f1xx.o"
+        ]
+    },
+    {
+        "directory": "OLED",
+        "file": "OLED/oled.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "OLED/oled.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/OLED/oled.o"
+        ]
+    },
+    {
+        "directory": "Utils",
+        "file": "Utils/cJSON.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Utils/cJSON.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Utils/cJSON.o"
+        ]
+    },
+    {
+        "directory": "Utils",
+        "file": "Utils/md5.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Utils/md5.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Utils/md5.o"
+        ]
+    },
+    {
+        "directory": "ESP8266",
+        "file": "ESP8266/esp8266_init.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "ESP8266/esp8266_init.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/ESP8266/esp8266_init.o"
+        ]
+    },
+    {
+        "directory": "ESP8266",
+        "file": "ESP8266/platform_mqtt_esp8266_impl.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "ESP8266/platform_mqtt_esp8266_impl.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/ESP8266/platform_mqtt_esp8266_impl.o"
+        ]
+    },
+    {
+        "directory": "ESP8266",
+        "file": "ESP8266/platform_uart_stm32_impl.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "ESP8266/platform_uart_stm32_impl.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/ESP8266/platform_uart_stm32_impl.o"
+        ]
+    },
+    {
+        "directory": "ESP8266",
+        "file": "ESP8266/platform_wifi_esp8266_impl.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "ESP8266/platform_wifi_esp8266_impl.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/ESP8266/platform_wifi_esp8266_impl.o"
+        ]
+    },
+    {
+        "directory": "ESP8266",
+        "file": "ESP8266/esp8266_test.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "ESP8266/esp8266_test.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/ESP8266/esp8266_test.o"
+        ]
+    },
+    {
+        "directory": "ESP8266",
+        "file": "ESP8266/onenet_cmd.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "ESP8266/onenet_cmd.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/ESP8266/onenet_cmd.o"
+        ]
+    },
+    {
+        "directory": "ESP8266",
+        "file": "ESP8266/onenet_kv.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "ESP8266/onenet_kv.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/ESP8266/onenet_kv.o"
+        ]
+    },
+    {
+        "directory": "DHT11",
+        "file": "DHT11/dht11.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "DHT11/dht11.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/DHT11/dht11.o"
+        ]
+    },
+    {
+        "directory": "Light_Sensor",
+        "file": "Light_Sensor/light_sensor.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Light_Sensor/light_sensor.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Light_Sensor/light_sensor.o"
+        ]
+    },
+    {
+        "directory": "PIR_Sensor",
+        "file": "PIR_Sensor/pir_sensor.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "PIR_Sensor/pir_sensor.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/PIR_Sensor/pir_sensor.o"
+        ]
+    },
+    {
+        "directory": "MDK-ARM",
+        "file": "MDK-ARM/startup_stm32f103xb.s",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "MDK-ARM/startup_stm32f103xb.s",
+            "-o",
+            "build/stm32f103c8t6_znjj/MDK-ARM/startup_stm32f103xb.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/main.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/main.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/main.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/gpio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/gpio.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/gpio.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/adc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/adc.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/adc.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/usart.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/usart.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/usart.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f1xx_it.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/stm32f1xx_it.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/stm32f1xx_it.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f1xx_hal_msp.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/stm32f1xx_hal_msp.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/stm32f1xx_hal_msp.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f1xx_hal_timebase_tim.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/stm32f1xx_hal_timebase_tim.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/stm32f1xx_hal_timebase_tim.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F1xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/system_stm32f1xx.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Core/Src/system_stm32f1xx.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Core/Src/system_stm32f1xx.o"
+        ]
+    },
+    {
+        "directory": "OLED",
+        "file": "OLED/oled.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "OLED/oled.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/OLED/oled.o"
+        ]
+    },
+    {
+        "directory": "Utils",
+        "file": "Utils/cJSON.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Utils/cJSON.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Utils/cJSON.o"
+        ]
+    },
+    {
+        "directory": "Utils",
+        "file": "Utils/md5.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Utils/md5.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Utils/md5.o"
+        ]
+    },
+    {
+        "directory": "ESP8266",
+        "file": "ESP8266/esp8266_init.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "ESP8266/esp8266_init.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/ESP8266/esp8266_init.o"
+        ]
+    },
+    {
+        "directory": "ESP8266",
+        "file": "ESP8266/platform_mqtt_esp8266_impl.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "ESP8266/platform_mqtt_esp8266_impl.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/ESP8266/platform_mqtt_esp8266_impl.o"
+        ]
+    },
+    {
+        "directory": "ESP8266",
+        "file": "ESP8266/platform_uart_stm32_impl.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "ESP8266/platform_uart_stm32_impl.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/ESP8266/platform_uart_stm32_impl.o"
+        ]
+    },
+    {
+        "directory": "ESP8266",
+        "file": "ESP8266/platform_wifi_esp8266_impl.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "ESP8266/platform_wifi_esp8266_impl.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/ESP8266/platform_wifi_esp8266_impl.o"
+        ]
+    },
+    {
+        "directory": "ESP8266",
+        "file": "ESP8266/esp8266_test.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "ESP8266/esp8266_test.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/ESP8266/esp8266_test.o"
+        ]
+    },
+    {
+        "directory": "ESP8266",
+        "file": "ESP8266/onenet_cmd.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "ESP8266/onenet_cmd.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/ESP8266/onenet_cmd.o"
+        ]
+    },
+    {
+        "directory": "ESP8266",
+        "file": "ESP8266/onenet_kv.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "ESP8266/onenet_kv.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/ESP8266/onenet_kv.o"
+        ]
+    },
+    {
+        "directory": "DHT11",
+        "file": "DHT11/dht11.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "DHT11/dht11.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/DHT11/dht11.o"
+        ]
+    },
+    {
+        "directory": "Light_Sensor",
+        "file": "Light_Sensor/light_sensor.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "Light_Sensor/light_sensor.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/Light_Sensor/light_sensor.o"
+        ]
+    },
+    {
+        "directory": "PIR_Sensor",
+        "file": "PIR_Sensor/pir_sensor.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCLANG/bin/armclang.exe",
+            "-c",
+            "PIR_Sensor/pir_sensor.c",
+            "-o",
+            "build/stm32f103c8t6_znjj/PIR_Sensor/pir_sensor.o"
+        ]
     }
 ]
