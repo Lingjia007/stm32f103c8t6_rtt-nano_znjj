@@ -114,7 +114,7 @@
 
 // <c1>Using Message Queue
 //  <i>Using Message Queue
-//#define RT_USING_MESSAGEQUEUE
+#define RT_USING_MESSAGEQUEUE
 // </c>
 // </h>
 
@@ -159,7 +159,7 @@
 // <o>The stack size for finsh thread <64-40960>
 //  <i>the buffer size of finsh
 //  <i>Default: 1024  (1024 Byte)
-#define FINSH_THREAD_STACK_SIZE 2048
+#define FINSH_THREAD_STACK_SIZE 1024
 // </h>
 
 #if defined(RT_USING_FINSH)

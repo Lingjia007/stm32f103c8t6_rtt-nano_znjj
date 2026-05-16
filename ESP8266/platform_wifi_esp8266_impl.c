@@ -73,6 +73,8 @@ void wifi_esp8266_uart_irq_handler(wifi_esp8266_t *wifi)
     {
         UART_CLEAR_FLAG(wifi->uart, PLATFORM_UART_FLAG_IDLE);
         wifi->rx_frame.sta.finsh = 1;
+        if (wifi->frame_cb != NULL)
+            wifi->frame_cb(wifi->frame_cb_arg);
     }
 }
 
@@ -263,5 +265,13 @@ void platform_wifi_esp8266_register(wifi_esp8266_t *wifi, platform_uart_base_t *
     wifi->uart = uart;
     wifi->rx_frame.sta.len = 0;
     wifi->rx_frame.sta.finsh = 0;
+    wifi->frame_cb = NULL;
+    wifi->frame_cb_arg = NULL;
     WIFI_INIT_BASE(&wifi->base, &esp8266_wifi_ops, name);
+}
+
+void wifi_esp8266_set_frame_cb(wifi_esp8266_t *wifi, wifi_frame_cb_t cb, void *arg)
+{
+    wifi->frame_cb = cb;
+    wifi->frame_cb_arg = arg;
 }
