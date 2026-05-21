@@ -21,6 +21,7 @@ CompileFlags:
     - '-Id:/edgedownload/stm32f103c8t6_znjj/DHT11'
     - '-Id:/edgedownload/stm32f103c8t6_znjj/Light_Sensor'
     - '-Id:/edgedownload/stm32f103c8t6_znjj/PIR_Sensor'
+    - '-Id:/edgedownload/stm32f103c8t6_znjj/MQ2'
     - '-DUSE_HAL_DRIVER'
     - '-DSTM32F103xB'
     - '-D__alignof__(x)='

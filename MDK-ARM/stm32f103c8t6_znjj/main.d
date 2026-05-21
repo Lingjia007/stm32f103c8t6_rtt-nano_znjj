@@ -7,9 +7,9 @@ stm32f103c8t6_znjj/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f103xb.h \
   ..\Drivers\CMSIS\Include\core_cm3.h \
   C:\Keil_v5\ARM\ARMCLANG\include\stdint.h \
-  D:\edgedownload\stm32f103c8t6_znjj\Drivers\CMSIS\Include\cmsis_version.h \
-  D:\edgedownload\stm32f103c8t6_znjj\Drivers\CMSIS\Include\cmsis_compiler.h \
-  D:\edgedownload\stm32f103c8t6_znjj\Drivers\CMSIS\Include\cmsis_armclang.h \
+  d:\edgedownload\stm32f103c8t6_znjj\Drivers\CMSIS\Include\cmsis_version.h \
+  d:\edgedownload\stm32f103c8t6_znjj\Drivers\CMSIS\Include\cmsis_compiler.h \
+  d:\edgedownload\stm32f103c8t6_znjj\Drivers\CMSIS\Include\cmsis_armclang.h \
   C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h \
   C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h \
   ..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\system_stm32f1xx.h \
@@ -47,5 +47,5 @@ stm32f103c8t6_znjj/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\ESP8266\platform_mqtt_esp8266_impl.h ..\ESP8266\platform_mqtt.h \
   ..\ESP8266\platform_uart_stm32_impl.h ..\DHT11\dht11.h \
   ..\ESP8266\esp8266_config.h ..\Light_Sensor\light_sensor.h \
-  ..\PIR_Sensor\pir_sensor.h ..\ESP8266\onenet_kv.h \
+  ..\MQ2\mq2.h ..\PIR_Sensor\pir_sensor.h ..\ESP8266\onenet_kv.h \
   ..\ESP8266\onenet_cmd.h

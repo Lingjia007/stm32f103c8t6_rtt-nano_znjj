@@ -32,6 +32,7 @@
 #include "platform_mqtt.h"
 #include "esp8266_config.h"
 #include "light_sensor.h"
+#include "mq2.h"
 #include "pir_sensor.h"
 #include "onenet_kv.h"
 #include "onenet_cmd.h"
@@ -64,7 +65,7 @@ uint8_t t = ' ';
 static rt_thread_t led_thread = RT_NULL;
 static rt_thread_t oled_thread = RT_NULL;
 static rt_thread_t dht11_thread = RT_NULL;
-static rt_thread_t light_sensor_thread = RT_NULL;
+static rt_thread_t adc_sensor_thread = RT_NULL;
 static rt_thread_t pir_sensor_thread = RT_NULL;
 static rt_thread_t mqtt_recv_thread = RT_NULL;
 static rt_thread_t mqtt_reply_thread = RT_NULL;
@@ -90,6 +91,7 @@ onenet_cmd_ctx_t g_cmd_ctx;
 static int g_kv_temperature = 0;
 static int g_kv_humidity = 0;
 static int g_kv_light = 0;
+static int g_kv_mq2 = 0;
 static uint8_t g_kv_bsp_led = 1;
 static char g_kv_pir[ONENET_KV_MAX_STRING_LEN] = "not_detected";
 /* USER CODE END PV */
@@ -102,6 +104,7 @@ static int mqtt_reconnect(void);
 static void onenet_kv_table_setup(void);
 static void bsp_led_on_change(const char *key, void *value, uint8_t value_type);
 static void mqtt_frame_isr_cb(void *arg);
+static void adc_sensor_thread_entry(void *parameter);
 static void mqtt_recv_thread_entry(void *parameter);
 static void mqtt_reply_thread_entry(void *parameter);
 /* USER CODE END PFP */
@@ -125,6 +128,8 @@ static void onenet_kv_table_setup(void)
                      PLATFORM_MQTT_VALUE_INT, &g_kv_humidity, NULL);
   onenet_kv_register(&g_kv_table, "LIGHT",
                      PLATFORM_MQTT_VALUE_INT, &g_kv_light, NULL);
+  onenet_kv_register(&g_kv_table, "MQ2",
+                     PLATFORM_MQTT_VALUE_INT, &g_kv_mq2, NULL);
   onenet_kv_register(&g_kv_table, "BSP_LED",
                      PLATFORM_MQTT_VALUE_BOOL, &g_kv_bsp_led, bsp_led_on_change);
   onenet_kv_register(&g_kv_table, "PIR",
@@ -263,24 +268,30 @@ static void dht11_thread_entry(void *parameter)
   }
 }
 
-static void light_sensor_thread_entry(void *parameter)
+static void adc_sensor_thread_entry(void *parameter)
 {
-  uint16_t adc_raw;
-  uint8_t light_percentage;
-  platform_mqtt_property_t prop;
+  uint16_t light_raw, mq2_raw;
+  uint8_t light_percentage, mq2_percentage;
+  platform_mqtt_property_t props[2];
   int16_t ret;
 
   rt_thread_mdelay(1000);
   light_sensor_init();
+  mq2_init();
 
   while (1)
   {
-    adc_raw = light_sensor_read_raw();
+    light_raw = light_sensor_read_raw();
     light_percentage = light_sensor_read_percentage();
 
-    rt_kprintf("Light Sensor: Raw=%d, Percentage=%d%%\n", adc_raw, light_percentage);
+    mq2_raw = mq2_read_raw();
+    mq2_percentage = mq2_read_percentage();
+
+    rt_kprintf("Light: Raw=%d, Pct=%d%% | MQ2: Raw=%d, Pct=%d%%\n",
+               light_raw, light_percentage, mq2_raw, mq2_percentage);
 
     g_kv_light = light_percentage;
+    g_kv_mq2 = mq2_percentage;
 
     if (!g_mqtt_connected)
     {
@@ -289,21 +300,25 @@ static void light_sensor_thread_entry(void *parameter)
 
     if (g_mqtt_connected)
     {
-      memset(&prop, 0, sizeof(prop));
-      strncpy(prop.key, "LIGHT", sizeof(prop.key) - 1);
-      prop.value_int = g_kv_light;
-      prop.value_type = PLATFORM_MQTT_VALUE_INT;
+      memset(props, 0, sizeof(props));
+      strncpy(props[0].key, "LIGHT", sizeof(props[0].key) - 1);
+      props[0].value_int = g_kv_light;
+      props[0].value_type = PLATFORM_MQTT_VALUE_INT;
+
+      strncpy(props[1].key, "MQ2", sizeof(props[1].key) - 1);
+      props[1].value_int = g_kv_mq2;
+      props[1].value_type = PLATFORM_MQTT_VALUE_INT;
 
       rt_mutex_take(g_esp8266_mutex, RT_WAITING_FOREVER);
       ret = MQTT_PUBLISH_PROPERTY(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID,
                                   ONENET_PRODUCT_ID, ONENET_DEVICE_NAME,
-                                  &prop, 1, "002");
+                                  props, 2, "002");
       rt_mutex_release(g_esp8266_mutex);
 
       if (ret == PLATFORM_MQTT_OK)
-        rt_kprintf("Light Publish OK!\n");
+        rt_kprintf("ADC Sensors Publish OK!\n");
       else
-        rt_kprintf("Light Publish FAILED! (error=%d)\n", ret);
+        rt_kprintf("ADC Sensors Publish FAILED! (error=%d)\n", ret);
     }
 
     rt_thread_mdelay(5000);
@@ -411,8 +426,8 @@ static void mqtt_recv_thread_entry(void *parameter)
     if (strcmp(recv_topic, ONENET_TOPIC_PROPERTY_SET) == 0)
     {
       int8_t updated = onenet_kv_parse_set_payload(&g_kv_table, recv_payload);
-      rt_kprintf("[mqtt_recv] SET: %d updated, LED=%d, T=%d, H=%d, L=%d\n",
-                 updated, g_kv_bsp_led, g_kv_temperature, g_kv_humidity, g_kv_light);
+      rt_kprintf("[mqtt_recv] SET: %d updated, LED=%d, T=%d, H=%d, L=%d, MQ2=%d\n",
+                 updated, g_kv_bsp_led, g_kv_temperature, g_kv_humidity, g_kv_light, g_kv_mq2);
 
       mqtt_reply_msg_t reply;
       memset(&reply, 0, sizeof(reply));
@@ -662,14 +677,14 @@ int main(void)
   if (dht11_thread != RT_NULL)
     rt_thread_startup(dht11_thread);
 
-  light_sensor_thread = rt_thread_create("light",
-                                         light_sensor_thread_entry,
-                                         RT_NULL,
-                                         640,
-                                         22,
-                                         10);
-  if (light_sensor_thread != RT_NULL)
-    rt_thread_startup(light_sensor_thread);
+  adc_sensor_thread = rt_thread_create("adc_sen",
+                                       adc_sensor_thread_entry,
+                                       RT_NULL,
+                                       1024,
+                                       22,
+                                       10);
+  if (adc_sensor_thread != RT_NULL)
+    rt_thread_startup(adc_sensor_thread);
 
   pir_sensor_thread = rt_thread_create("pir",
                                        pir_sensor_thread_entry,

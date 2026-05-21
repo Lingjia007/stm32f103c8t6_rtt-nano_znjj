@@ -1,19 +1,19 @@
-#include "light_sensor.h"
+#include "mq2.h"
 #include "adc.h"
 #include "rtthread.h"
 
 extern ADC_HandleTypeDef hadc1;
 
-void light_sensor_init(void)
+void mq2_init(void)
 {
 }
 
-uint16_t light_sensor_read_raw(void)
+uint16_t mq2_read_raw(void)
 {
     uint16_t adc_value = 0;
     ADC_ChannelConfTypeDef sConfig = {0};
 
-    sConfig.Channel = ADC_CHANNEL_1;
+    sConfig.Channel = ADC_CHANNEL_0;
     sConfig.Rank = ADC_REGULAR_RANK_1;
     sConfig.SamplingTime = ADC_SAMPLETIME_55CYCLES_5;
     HAL_ADC_ConfigChannel(&hadc1, &sConfig);
@@ -28,14 +28,14 @@ uint16_t light_sensor_read_raw(void)
     return adc_value;
 }
 
-uint8_t light_sensor_read_percentage(void)
+uint8_t mq2_read_percentage(void)
 {
     uint16_t adc_value;
     uint8_t percentage;
 
-    adc_value = light_sensor_read_raw();
+    adc_value = mq2_read_raw();
 
-    percentage = (uint8_t)(100 - (adc_value * 100) / 4095);
+    percentage = (uint8_t)((adc_value * 100) / 4095);
 
     return percentage;
 }
