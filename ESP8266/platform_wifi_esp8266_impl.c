@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdarg.h>
+#include <stdlib.h>
 #include <rtthread.h>
 
 static void esp8266_delay_ms(uint32_t ms)
@@ -144,6 +145,29 @@ static int16_t esp8266_set_mode(void *ctx, uint8_t mode)
     return esp8266_send_at_cmd_impl(wifi, cmd, "OK", 500);
 }
 
+static int16_t esp8266_get_mode(void *ctx, uint8_t *mode)
+{
+    wifi_esp8266_t *wifi = container_of(ctx, wifi_esp8266_t, base);
+    if (mode == NULL)
+        return PLATFORM_WIFI_INVALID_PARAM;
+
+    int16_t ret = esp8266_send_at_cmd_impl(wifi, "AT+CWMODE?", "OK", 500);
+    if (ret != PLATFORM_WIFI_OK)
+        return PLATFORM_WIFI_ERROR;
+
+    uint8_t *resp = wifi_esp8266_rx_get_frame(wifi);
+    if (resp == NULL)
+        return PLATFORM_WIFI_ERROR;
+
+    char *p = strstr((const char *)resp, "+CWMODE:");
+    if (p == NULL)
+        return PLATFORM_WIFI_ERROR;
+
+    p += 8;
+    *mode = (uint8_t)atoi(p);
+    return PLATFORM_WIFI_OK;
+}
+
 static int16_t esp8266_join_ap(void *ctx, const char *ssid, const char *pwd)
 {
     wifi_esp8266_t *wifi = container_of(ctx, wifi_esp8266_t, base);
@@ -244,6 +268,7 @@ static const platform_wifi_ops_t esp8266_wifi_ops = {
     .deinit = esp8266_wifi_deinit,
     .at_test = esp8266_at_test,
     .set_mode = esp8266_set_mode,
+    .get_mode = esp8266_get_mode,
     .join_ap = esp8266_join_ap,
     .get_ip = esp8266_get_ip,
     .connect_tcp = esp8266_connect_tcp,
@@ -265,8 +290,6 @@ void platform_wifi_esp8266_register(wifi_esp8266_t *wifi, platform_uart_base_t *
     wifi->uart = uart;
     wifi->rx_frame.sta.len = 0;
     wifi->rx_frame.sta.finsh = 0;
-    wifi->frame_cb = NULL;
-    wifi->frame_cb_arg = NULL;
     WIFI_INIT_BASE(&wifi->base, &esp8266_wifi_ops, name);
 }
 

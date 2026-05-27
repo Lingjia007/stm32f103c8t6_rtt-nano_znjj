@@ -35,6 +35,7 @@ stm32f103c8t6_znjj/platform_wifi_esp8266_impl.o: \
   C:\Keil_v5\ARM\ARMCLANG\include\string.h \
   C:\Keil_v5\ARM\ARMCLANG\include\stdio.h \
   C:\Keil_v5\ARM\ARMCLANG\include\stdarg.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h \
   ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtthread.h \
   ..\RT-Thread\rtconfig.h \
   ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\components\finsh\inc\finsh_config.h \

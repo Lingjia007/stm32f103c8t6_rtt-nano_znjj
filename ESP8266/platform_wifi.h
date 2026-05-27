@@ -31,6 +31,7 @@ typedef struct
     int16_t (*deinit)(void *ctx);
     int16_t (*at_test)(void *ctx);
     int16_t (*set_mode)(void *ctx, uint8_t mode);
+    int16_t (*get_mode)(void *ctx, uint8_t *mode);
     int16_t (*join_ap)(void *ctx, const char *ssid, const char *pwd);
     int16_t (*get_ip)(void *ctx, char *buf, uint16_t buf_len);
     int16_t (*connect_tcp)(void *ctx, const char *host, uint16_t port);
@@ -60,6 +61,9 @@ typedef struct
 
 #define WIFI_SET_MODE(wifi, mode) \
     ((wifi) && (wifi)->ops && (wifi)->ops->set_mode ? (wifi)->ops->set_mode((wifi), (mode)) : (int16_t)PLATFORM_WIFI_ERROR)
+
+#define WIFI_GET_MODE(wifi, mode) \
+    ((wifi) && (wifi)->ops && (wifi)->ops->get_mode ? (wifi)->ops->get_mode((wifi), (mode)) : (int16_t)PLATFORM_WIFI_ERROR)
 
 #define WIFI_JOIN_AP(wifi, ssid, pwd) \
     ((wifi) && (wifi)->ops && (wifi)->ops->join_ap ? (wifi)->ops->join_ap((wifi), (ssid), (pwd)) : (int16_t)PLATFORM_WIFI_ERROR)
