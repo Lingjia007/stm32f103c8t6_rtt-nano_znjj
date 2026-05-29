@@ -6,7 +6,7 @@
 #include <stddef.h>
 
 #define ONENET_KV_MAX_KEY_LEN 16
-#define ONENET_KV_MAX_ENTRIES 8
+#define ONENET_KV_MAX_ENTRIES 12
 #define ONENET_KV_MAX_STRING_LEN 16
 
 typedef void (*onenet_kv_on_change_t)(const char *key, void *value, uint8_t value_type);
@@ -29,27 +29,27 @@ typedef struct
 void onenet_kv_init(onenet_kv_table_t *table);
 
 int8_t onenet_kv_register(onenet_kv_table_t *table,
-                           const char *key,
-                           uint8_t value_type,
-                           void *value_ptr,
-                           onenet_kv_on_change_t on_change);
+                          const char *key,
+                          uint8_t value_type,
+                          void *value_ptr,
+                          onenet_kv_on_change_t on_change);
 
 onenet_kv_entry_t *onenet_kv_find(onenet_kv_table_t *table, const char *key);
 
 int8_t onenet_kv_set_value(onenet_kv_table_t *table,
-                            const char *key,
-                            const char *value_str);
+                           const char *key,
+                           const char *value_str);
 
 int8_t onenet_kv_get_property(onenet_kv_table_t *table,
-                               const char *key,
-                               platform_mqtt_property_t *prop);
+                              const char *key,
+                              platform_mqtt_property_t *prop);
 
 int8_t onenet_kv_get_all_properties(onenet_kv_table_t *table,
-                                     platform_mqtt_property_t *props,
-                                     uint8_t max_props);
+                                    platform_mqtt_property_t *props,
+                                    uint8_t max_props);
 
 int8_t onenet_kv_parse_set_payload(onenet_kv_table_t *table,
-                                    const char *payload);
+                                   const char *payload);
 
 void onenet_kv_mark_clean(onenet_kv_table_t *table, const char *key);
 

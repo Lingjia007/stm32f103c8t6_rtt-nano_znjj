@@ -338,7 +338,7 @@
               <MiscControls />
               <Define>USE_HAL_DRIVER,STM32F103xB</Define>
               <Undefine />
-              <IncludePath>../Core/Inc;../RT-Thread;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/inc/;../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/;../OLED;../Utils;../ESP8266;../DHT11;../Light_Sensor;../PIR_Sensor;../MQ2;../Relay</IncludePath>
+              <IncludePath>../Core/Inc;../RT-Thread;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/inc/;../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/;../OLED;../Utils;../ESP8266;../DHT11;../Light_Sensor;../PIR_Sensor;../MQ2;../Relay;../BUZZER</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -980,6 +980,16 @@
               <FileName>relay.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Relay\relay.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>BUZZER</GroupName>
+          <Files>
+            <File>
+              <FileName>buzzer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BUZZER\buzzer.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -29,7 +29,8 @@
                 "DHT11",
                 "Light_Sensor",
                 "PIR_Sensor",
-                "MQ2"
+                "MQ2",
+                "Relay"
             ],
             "defines": [
                 "USE_HAL_DRIVER",
