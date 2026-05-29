@@ -36,6 +36,7 @@
 #include "pir_sensor.h"
 #include "onenet_kv.h"
 #include "onenet_cmd.h"
+#include "relay.h"
 
 #define DHT11_UPLOAD_ENABLED 1
 #define DHT11_UPLOAD_INTERVAL 3600
@@ -93,6 +94,8 @@ static int g_kv_humidity = 0;
 static int g_kv_light = 0;
 static int g_kv_mq2 = 0;
 static uint8_t g_kv_bsp_led = 1;
+static uint8_t g_kv_fan = 0;
+static uint8_t g_kv_nebulizer = 0;
 static char g_kv_pir[ONENET_KV_MAX_STRING_LEN] = "not_detected";
 /* USER CODE END PV */
 
@@ -103,6 +106,8 @@ static void dwt_init(void);
 static int mqtt_reconnect(void);
 static void onenet_kv_table_setup(void);
 static void bsp_led_on_change(const char *key, void *value, uint8_t value_type);
+static void fan_on_change(const char *key, void *value, uint8_t value_type);
+static void nebulizer_on_change(const char *key, void *value, uint8_t value_type);
 static void mqtt_frame_isr_cb(void *arg);
 static void adc_sensor_thread_entry(void *parameter);
 static void mqtt_recv_thread_entry(void *parameter);
@@ -116,6 +121,20 @@ static void bsp_led_on_change(const char *key, void *value, uint8_t value_type)
 {
   uint8_t led_val = *((uint8_t *)value);
   rt_kprintf("BSP_LED changed -> %d (%s)\n", led_val, led_val ? "blink" : "off");
+}
+
+static void fan_on_change(const char *key, void *value, uint8_t value_type)
+{
+  uint8_t fan_val = *((uint8_t *)value);
+  relay_fan_set(fan_val);
+  rt_kprintf("FAN changed -> %d (%s)\n", fan_val, fan_val ? "ON" : "OFF");
+}
+
+static void nebulizer_on_change(const char *key, void *value, uint8_t value_type)
+{
+  uint8_t nebulizer_val = *((uint8_t *)value);
+  relay_nebulizer_set(nebulizer_val);
+  rt_kprintf("NEBULIZER changed -> %d (%s)\n", nebulizer_val, nebulizer_val ? "ON" : "OFF");
 }
 
 static void onenet_kv_table_setup(void)
@@ -132,6 +151,10 @@ static void onenet_kv_table_setup(void)
                      PLATFORM_MQTT_VALUE_INT, &g_kv_mq2, NULL);
   onenet_kv_register(&g_kv_table, "BSP_LED",
                      PLATFORM_MQTT_VALUE_BOOL, &g_kv_bsp_led, bsp_led_on_change);
+  onenet_kv_register(&g_kv_table, "FAN",
+                     PLATFORM_MQTT_VALUE_BOOL, &g_kv_fan, fan_on_change);
+  onenet_kv_register(&g_kv_table, "NEBULIZER",
+                     PLATFORM_MQTT_VALUE_BOOL, &g_kv_nebulizer, nebulizer_on_change);
   onenet_kv_register(&g_kv_table, "PIR",
                      PLATFORM_MQTT_VALUE_STRING, g_kv_pir, NULL);
 
@@ -642,6 +665,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   dwt_init();
   OLED_Init();
+  relay_init();
   OLED_Clear();
   OLED_DisplayTurn(0);
   OLED_ColorTurn(0);

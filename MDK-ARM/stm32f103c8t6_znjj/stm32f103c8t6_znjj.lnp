@@ -38,6 +38,7 @@
 "stm32f103c8t6_znjj\light_sensor.o"
 "stm32f103c8t6_znjj\pir_sensor.o"
 "stm32f103c8t6_znjj\mq2.o"
+"stm32f103c8t6_znjj\relay.o"
 "stm32f103c8t6_znjj\cmd.o"
 "stm32f103c8t6_znjj\msh.o"
 "stm32f103c8t6_znjj\msh_file.o"
