@@ -9,7 +9,7 @@
 #define ONENET_KV_MAX_ENTRIES 12
 #define ONENET_KV_MAX_STRING_LEN 16
 
-typedef void (*onenet_kv_on_change_t)(const char *key, void *value, uint8_t value_type);
+typedef int8_t (*onenet_kv_on_change_t)(const char *key, void *value, uint8_t value_type);
 
 typedef struct
 {
@@ -49,7 +49,8 @@ int8_t onenet_kv_get_all_properties(onenet_kv_table_t *table,
                                     uint8_t max_props);
 
 int8_t onenet_kv_parse_set_payload(onenet_kv_table_t *table,
-                                   const char *payload);
+                                   const char *payload,
+                                   int8_t *cb_result);
 
 void onenet_kv_mark_clean(onenet_kv_table_t *table, const char *key);
 

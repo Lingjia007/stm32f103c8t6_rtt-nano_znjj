@@ -87,7 +87,11 @@ int8_t onenet_kv_set_value(onenet_kv_table_t *table,
     entry->dirty = 1;
 
     if (entry->on_change != NULL)
-        entry->on_change(key, entry->value_ptr, entry->value_type);
+    {
+        int8_t cb_ret = entry->on_change(key, entry->value_ptr, entry->value_type);
+        if (cb_ret != 0)
+            return -4;
+    }
 
     return 0;
 }
@@ -234,10 +238,14 @@ static char *find_json_value(const char *json, const char *key, char *buf, uint1
 }
 
 int8_t onenet_kv_parse_set_payload(onenet_kv_table_t *table,
-                                    const char *payload)
+                                    const char *payload,
+                                    int8_t *cb_result)
 {
     if (table == NULL || payload == NULL)
         return -1;
+
+    if (cb_result != NULL)
+        *cb_result = 0;
 
     char *params_start = strstr(payload, "\"params\"");
     if (params_start == NULL)
@@ -254,9 +262,16 @@ int8_t onenet_kv_parse_set_payload(onenet_kv_table_t *table,
     {
         if (find_json_value(params_obj, table->entries[i].key, value_buf, sizeof(value_buf)) != NULL)
         {
-            if (onenet_kv_set_value(table, table->entries[i].key, value_buf) == 0)
+            int8_t ret = onenet_kv_set_value(table, table->entries[i].key, value_buf);
+            if (ret == 0)
             {
                 updated++;
+            }
+            else if (ret == -4)
+            {
+                updated++;
+                if (cb_result != NULL)
+                    *cb_result = -1;
             }
         }
     }
