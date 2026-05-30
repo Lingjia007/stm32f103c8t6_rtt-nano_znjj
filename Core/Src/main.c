@@ -41,6 +41,7 @@
 #include "relay.h"
 #include "buzzer.h"
 #include "platform_mqtt_esp8266_impl.h"
+#include "key.h"
 
 #define DHT11_UPLOAD_ENABLED 1
 #define DHT11_UPLOAD_INTERVAL 3600
@@ -73,6 +74,7 @@ static rt_thread_t dht11_thread = RT_NULL;
 static rt_thread_t adc_sensor_thread = RT_NULL;
 static rt_thread_t pir_sensor_thread = RT_NULL;
 static rt_thread_t mqtt_thread = RT_NULL;
+static rt_thread_t key_thread = RT_NULL;
 
 static rt_mutex_t g_esp8266_mutex = RT_NULL;
 static rt_sem_t g_mqtt_frame_sem = RT_NULL;
@@ -138,6 +140,70 @@ static int8_t buzzer_on_change(const char *key, void *value, uint8_t value_type)
   buzzer_set(buzzer_val);
   rt_kprintf("BUZZER changed -> %d (%s)\n", buzzer_val, buzzer_val ? "ON" : "OFF");
   return 0;
+}
+
+void key_event_callback(uint8_t key_id, uint8_t event, void *user_data)
+{
+  (void)user_data;
+  const char *key_names[KEY_COUNT] = {"KEY1", "KEY2", "KEY3", "KEY4"};
+  const char *event_name = "UNKNOWN";
+
+  switch (event)
+  {
+  case KEY_EVENT_NONE:
+    event_name = "NONE";
+    break;
+  case KEY_EVENT_PRESS:
+    event_name = "PRESS";
+    break;
+  case KEY_EVENT_RELEASE:
+    event_name = "RELEASE";
+    break;
+  case KEY_EVENT_LONG_PRESS:
+    event_name = "LONG_PRESS";
+    break;
+  case KEY_EVENT_CLICK:
+    event_name = "CLICK";
+    break;
+  case KEY_EVENT_DOUBLE_CLICK:
+    event_name = "DOUBLE_CLICK";
+    break;
+  default:
+    event_name = "UNKNOWN";
+    break;
+  }
+
+  rt_kprintf("[KEY] %s event: %s\n", key_names[key_id], event_name);
+
+  if (event == KEY_EVENT_CLICK)
+  {
+    switch (key_id)
+    {
+    case 0:
+      g_kv_fan = !g_kv_fan;
+      relay_fan_set(g_kv_fan);
+      rt_kprintf("  FAN toggled -> %d\n", g_kv_fan);
+      break;
+    case 1:
+      g_kv_nebulizer = !g_kv_nebulizer;
+      relay_nebulizer_set(g_kv_nebulizer);
+      rt_kprintf("  NEBULIZER toggled -> %d\n", g_kv_nebulizer);
+      break;
+    case 2:
+      g_kv_buzzer = !g_kv_buzzer;
+      buzzer_set(g_kv_buzzer);
+      rt_kprintf("  BUZZER toggled -> %d\n", g_kv_buzzer);
+      break;
+    case 3:
+      g_kv_bsp_led = !g_kv_bsp_led;
+      rt_kprintf("  LED blink toggled -> %d\n", g_kv_bsp_led);
+      break;
+    }
+  }
+  else if (event == KEY_EVENT_LONG_PRESS)
+  {
+    rt_kprintf("  %s long pressed - special action\n", key_names[key_id]);
+  }
 }
 
 static void onenet_kv_table_setup(void)
@@ -733,6 +799,18 @@ int main(void)
                                  20);
   if (mqtt_thread != RT_NULL)
     rt_thread_startup(mqtt_thread);
+
+  key_thread = rt_thread_create("key",
+                                key_thread_entry,
+                                RT_NULL,
+                                512,
+                                25,
+                                10);
+  if (key_thread != RT_NULL)
+  {
+    key_register_callback(key_event_callback, RT_NULL);
+    rt_thread_startup(key_thread);
+  }
 
   /* USER CODE END 2 */
 

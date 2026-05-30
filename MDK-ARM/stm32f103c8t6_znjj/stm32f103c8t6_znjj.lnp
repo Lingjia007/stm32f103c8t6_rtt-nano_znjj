@@ -41,6 +41,7 @@
 "stm32f103c8t6_znjj\mq2.o"
 "stm32f103c8t6_znjj\relay.o"
 "stm32f103c8t6_znjj\buzzer.o"
+"stm32f103c8t6_znjj\key.o"
 "stm32f103c8t6_znjj\cmd.o"
 "stm32f103c8t6_znjj\msh.o"
 "stm32f103c8t6_znjj\msh_file.o"
