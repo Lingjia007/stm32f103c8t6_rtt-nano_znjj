@@ -23,6 +23,12 @@ typedef struct
         } sta;
     } rx_frame;
     uint8_t tx_buf[ESP8266_UART_TX_BUF_SIZE];
+    struct
+    {
+        uint8_t buf[ESP8266_UART_RX_BUF_SIZE];
+        uint16_t len;
+        uint8_t ready;
+    } urc;
     wifi_frame_cb_t frame_cb;
     void *frame_cb_arg;
 } wifi_esp8266_t;
@@ -34,5 +40,8 @@ void wifi_esp8266_rx_restart(wifi_esp8266_t *wifi);
 uint8_t *wifi_esp8266_rx_get_frame(wifi_esp8266_t *wifi);
 uint16_t wifi_esp8266_rx_get_frame_len(wifi_esp8266_t *wifi);
 void wifi_esp8266_set_frame_cb(wifi_esp8266_t *wifi, wifi_frame_cb_t cb, void *arg);
+void wifi_esp8266_urc_save(wifi_esp8266_t *wifi);
+int wifi_esp8266_urc_restore(wifi_esp8266_t *wifi);
+uint16_t wifi_esp8266_urc_copy(wifi_esp8266_t *wifi, uint8_t *dst, uint16_t dst_size);
 
 #endif

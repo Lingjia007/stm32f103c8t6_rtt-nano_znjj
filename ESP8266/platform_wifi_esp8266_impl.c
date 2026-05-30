@@ -102,6 +102,10 @@ static int16_t esp8266_send_at_cmd_impl(wifi_esp8266_t *wifi, const char *cmd, c
             }
             else
             {
+                if (strstr((const char *)ret, "+MQTTSUBRECV:") != NULL)
+                {
+                    wifi_esp8266_urc_save(wifi);
+                }
                 wifi_esp8266_rx_restart(wifi);
             }
         }
@@ -297,4 +301,54 @@ void wifi_esp8266_set_frame_cb(wifi_esp8266_t *wifi, wifi_frame_cb_t cb, void *a
 {
     wifi->frame_cb = cb;
     wifi->frame_cb_arg = arg;
+}
+
+void wifi_esp8266_urc_save(wifi_esp8266_t *wifi)
+{
+    if (wifi->rx_frame.sta.finsh == 0 || wifi->rx_frame.sta.len == 0)
+        return;
+
+    uint16_t copy_len = wifi->rx_frame.sta.len;
+    if (copy_len > ESP8266_UART_RX_BUF_SIZE)
+        copy_len = ESP8266_UART_RX_BUF_SIZE;
+
+    memcpy(wifi->urc.buf, wifi->rx_frame.buf, copy_len);
+    wifi->urc.len = copy_len;
+    wifi->urc.ready = 1;
+}
+
+int wifi_esp8266_urc_restore(wifi_esp8266_t *wifi)
+{
+    if (wifi->urc.ready == 0)
+        return 0;
+
+    uint16_t copy_len = wifi->urc.len;
+    if (copy_len > ESP8266_UART_RX_BUF_SIZE - 1)
+        copy_len = ESP8266_UART_RX_BUF_SIZE - 1;
+
+    memcpy(wifi->rx_frame.buf, wifi->urc.buf, copy_len);
+    wifi->rx_frame.buf[copy_len] = '\0';
+    wifi->rx_frame.sta.len = copy_len;
+    wifi->rx_frame.sta.finsh = 1;
+
+    wifi->urc.ready = 0;
+    wifi->urc.len = 0;
+    return 1;
+}
+
+uint16_t wifi_esp8266_urc_copy(wifi_esp8266_t *wifi, uint8_t *dst, uint16_t dst_size)
+{
+    if (wifi->urc.ready == 0 || dst == NULL || dst_size == 0)
+        return 0;
+
+    uint16_t copy_len = wifi->urc.len;
+    if (copy_len > dst_size - 1)
+        copy_len = dst_size - 1;
+
+    memcpy(dst, wifi->urc.buf, copy_len);
+    dst[copy_len] = '\0';
+
+    wifi->urc.ready = 0;
+    wifi->urc.len = 0;
+    return copy_len;
 }

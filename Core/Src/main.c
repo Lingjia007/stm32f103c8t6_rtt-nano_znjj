@@ -39,6 +39,7 @@
 #include "mqtt_worker.h"
 #include "relay.h"
 #include "buzzer.h"
+#include "platform_mqtt_esp8266_impl.h"
 
 #define DHT11_UPLOAD_ENABLED 1
 #define DHT11_UPLOAD_INTERVAL 3600
@@ -357,6 +358,9 @@ static void mqtt_recv_thread_entry(void *parameter)
   static char recv_topic[PLATFORM_MQTT_MAX_TOPIC_LEN];
   static char recv_payload[PLATFORM_MQTT_MAX_PAYLOAD_LEN];
   static char recv_msg_id[32];
+  static uint8_t raw_buf[ESP8266_UART_RX_BUF_SIZE];
+  uint16_t raw_len = 0;
+  uint8_t has_raw = 0;
 
   rt_thread_mdelay(4000);
   wifi_esp8266_set_frame_cb(g_esp8266_mqtt.wifi, mqtt_frame_isr_cb, NULL);
@@ -381,24 +385,53 @@ static void mqtt_recv_thread_entry(void *parameter)
     if (!g_mqtt_connected)
       continue;
 
-    if (g_esp8266_mqtt.wifi->rx_frame.sta.finsh == 0)
+    has_raw = 0;
+
+    rt_mutex_take(g_esp8266_mutex, RT_WAITING_FOREVER);
+
+    if (g_esp8266_mqtt.wifi->urc.ready)
+    {
+      raw_len = wifi_esp8266_urc_copy(g_esp8266_mqtt.wifi, raw_buf, sizeof(raw_buf));
+      wifi_esp8266_rx_restart(g_esp8266_mqtt.wifi);
+      rt_mutex_release(g_esp8266_mutex);
+      if (raw_len > 0)
+        has_raw = 1;
+    }
+    else if (g_esp8266_mqtt.wifi->rx_frame.sta.finsh == 1)
+    {
+      uint16_t flen = g_esp8266_mqtt.wifi->rx_frame.sta.len;
+      if (flen > sizeof(raw_buf) - 1)
+        flen = sizeof(raw_buf) - 1;
+      memcpy(raw_buf, g_esp8266_mqtt.wifi->rx_frame.buf, flen);
+      raw_buf[flen] = '\0';
+      raw_len = flen;
+      wifi_esp8266_rx_restart(g_esp8266_mqtt.wifi);
+      rt_mutex_release(g_esp8266_mutex);
+      has_raw = 1;
+    }
+    else
+    {
+      rt_mutex_release(g_esp8266_mutex);
+      continue;
+    }
+
+    if (!has_raw)
+      continue;
+
+    if (strstr((const char *)raw_buf, "+MQTTSUBRECV:") == NULL)
       continue;
 
     memset(recv_topic, 0, sizeof(recv_topic));
     memset(recv_payload, 0, sizeof(recv_payload));
     memset(recv_msg_id, 0, sizeof(recv_msg_id));
 
-    rt_mutex_take(g_esp8266_mutex, RT_WAITING_FOREVER);
-    int16_t recv_ret = MQTT_CHECK_PROPERTY_SET_RECV(&g_esp8266_mqtt.base,
-                                                    recv_topic, recv_payload,
-                                                    sizeof(recv_payload), recv_msg_id);
-    wifi_esp8266_rx_restart(g_esp8266_mqtt.wifi);
+    int16_t recv_ret = esp8266_mqtt_parse_set_from_buf(
+        (const char *)raw_buf, raw_len,
+        recv_topic, recv_payload,
+        sizeof(recv_payload), recv_msg_id);
 
     if (recv_ret != PLATFORM_MQTT_OK)
-    {
-      rt_mutex_release(g_esp8266_mutex);
       continue;
-    }
 
     if (strcmp(recv_topic, ONENET_TOPIC_PROPERTY_SET) == 0)
     {
@@ -408,20 +441,19 @@ static void mqtt_recv_thread_entry(void *parameter)
       const char *reply_msg;
       onenet_cmd_handle_set(&g_cmd_ctx, recv_payload, &reply_code, &reply_msg);
 
+      rt_mutex_take(g_esp8266_mutex, RT_WAITING_FOREVER);
       int16_t reply_ret = MQTT_PUBLISH_SET_REPLY(&g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID,
                                                  ONENET_PRODUCT_ID, ONENET_DEVICE_NAME,
                                                  recv_msg_id, reply_code, reply_msg);
+      rt_mutex_release(g_esp8266_mutex);
+
       if (reply_ret == PLATFORM_MQTT_OK)
         rt_kprintf("[mqtt_recv] SET_REPLY sent (code=%d)\n", reply_code);
       else
         rt_kprintf("[mqtt_recv] SET_REPLY FAIL (err=%d)\n", reply_ret);
-
-      rt_mutex_release(g_esp8266_mutex);
     }
     else
     {
-      rt_mutex_release(g_esp8266_mutex);
-
       if (strcmp(recv_topic, ONENET_TOPIC_PROPERTY_POST_REPLY) == 0)
         continue;
 
@@ -670,7 +702,7 @@ int main(void)
   mqtt_recv_thread = rt_thread_create("mqtt_rcv",
                                       mqtt_recv_thread_entry,
                                       RT_NULL,
-                                      1024,
+                                      1536,
                                       6,
                                       20);
   if (mqtt_recv_thread != RT_NULL)

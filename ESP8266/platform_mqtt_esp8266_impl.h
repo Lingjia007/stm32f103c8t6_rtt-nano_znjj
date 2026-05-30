@@ -12,4 +12,8 @@ typedef struct
 
 void platform_mqtt_esp8266_register(mqtt_esp8266_t *mqtt, wifi_esp8266_t *wifi, const char *name);
 
+int16_t esp8266_mqtt_parse_set_from_buf(const char *raw, uint16_t raw_len,
+                                        char *topic, char *payload,
+                                        uint16_t max_payload_len, char *msg_id);
+
 #endif

@@ -96,6 +96,10 @@ static int16_t esp8266_mqtt_publish_raw(void *ctx, uint8_t link_id, const char *
             {
                 return PLATFORM_MQTT_ERROR;
             }
+            if (strstr((const char *)resp, "+MQTTSUBRECV:") != NULL)
+            {
+                wifi_esp8266_urc_save(self->wifi);
+            }
             wifi_esp8266_rx_restart(self->wifi);
         }
         timeout--;
@@ -346,4 +350,70 @@ void platform_mqtt_esp8266_register(mqtt_esp8266_t *mqtt, wifi_esp8266_t *wifi, 
 
     mqtt->wifi = wifi;
     MQTT_INIT_BASE(&mqtt->base, &esp8266_mqtt_ops, name);
+}
+
+int16_t esp8266_mqtt_parse_set_from_buf(const char *raw, uint16_t raw_len,
+                                        char *topic, char *payload,
+                                        uint16_t max_payload_len, char *msg_id)
+{
+    if (raw == NULL || topic == NULL || payload == NULL)
+        return PLATFORM_MQTT_INVALID_PARAM;
+
+    char *recv_marker = strstr(raw, "+MQTTSUBRECV:");
+    if (recv_marker == NULL)
+        return PLATFORM_MQTT_ERROR;
+
+    char *topic_start = strchr(recv_marker, '"');
+    if (topic_start == NULL)
+        return PLATFORM_MQTT_ERROR;
+    topic_start++;
+    char *topic_end = strchr(topic_start, '"');
+    if (topic_end == NULL)
+        return PLATFORM_MQTT_ERROR;
+
+    uint16_t topic_len = topic_end - topic_start;
+    if (topic_len >= PLATFORM_MQTT_MAX_TOPIC_LEN)
+        topic_len = PLATFORM_MQTT_MAX_TOPIC_LEN - 1;
+    strncpy(topic, topic_start, topic_len);
+    topic[topic_len] = '\0';
+
+    char *len_start = strchr(topic_end + 1, ',');
+    if (len_start == NULL)
+        return PLATFORM_MQTT_ERROR;
+    len_start++;
+    uint16_t payload_len = atoi(len_start);
+    if (payload_len == 0 || payload_len > max_payload_len)
+        payload_len = max_payload_len - 1;
+
+    char *payload_start = strchr(len_start, ',');
+    if (payload_start == NULL)
+        return PLATFORM_MQTT_ERROR;
+    payload_start++;
+    strncpy(payload, payload_start, payload_len);
+    payload[payload_len] = '\0';
+
+    if (msg_id != NULL)
+    {
+        char *id_start = strstr(payload, "\"id\"");
+        if (id_start != NULL)
+        {
+            id_start = strchr(id_start, ':');
+            if (id_start != NULL)
+            {
+                id_start++;
+                while (*id_start == ' ' || *id_start == '"')
+                    id_start++;
+                char *id_end = id_start;
+                while (*id_end != '"' && *id_end != ',' && *id_end != '}' && *id_end != '\0')
+                    id_end++;
+                uint16_t id_len = id_end - id_start;
+                if (id_len >= 32)
+                    id_len = 31;
+                strncpy(msg_id, id_start, id_len);
+                msg_id[id_len] = '\0';
+            }
+        }
+    }
+
+    return PLATFORM_MQTT_OK;
 }

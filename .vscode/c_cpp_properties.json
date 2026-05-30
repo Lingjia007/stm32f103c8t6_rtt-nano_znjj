@@ -30,7 +30,8 @@
                 "Light_Sensor",
                 "PIR_Sensor",
                 "MQ2",
-                "Relay"
+                "Relay",
+                "BUZZER"
             ],
             "defines": [
                 "USE_HAL_DRIVER",
