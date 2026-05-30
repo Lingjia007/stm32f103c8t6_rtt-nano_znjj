@@ -26,6 +26,7 @@
 /* USER CODE BEGIN Includes */
 #include <string.h>
 #include "rtthread.h"
+#include "rthw.h"
 #include "oled.h"
 #include "esp8266_init.h"
 #include "dht11.h"
@@ -71,8 +72,7 @@ static rt_thread_t oled_thread = RT_NULL;
 static rt_thread_t dht11_thread = RT_NULL;
 static rt_thread_t adc_sensor_thread = RT_NULL;
 static rt_thread_t pir_sensor_thread = RT_NULL;
-static rt_thread_t mqtt_recv_thread = RT_NULL;
-static rt_thread_t mqtt_worker_thread = RT_NULL;
+static rt_thread_t mqtt_thread = RT_NULL;
 
 static rt_mutex_t g_esp8266_mutex = RT_NULL;
 static rt_sem_t g_mqtt_frame_sem = RT_NULL;
@@ -353,70 +353,50 @@ static void mqtt_frame_isr_cb(void *arg)
   rt_sem_release(g_mqtt_frame_sem);
 }
 
-static void mqtt_recv_thread_entry(void *parameter)
+static void mqtt_process_recv(void)
 {
   static char recv_topic[PLATFORM_MQTT_MAX_TOPIC_LEN];
   static char recv_payload[PLATFORM_MQTT_MAX_PAYLOAD_LEN];
   static char recv_msg_id[32];
   static uint8_t raw_buf[ESP8266_UART_RX_BUF_SIZE];
-  uint16_t raw_len = 0;
-  uint8_t has_raw = 0;
-
-  rt_thread_mdelay(4000);
-  wifi_esp8266_set_frame_cb(g_esp8266_mqtt.wifi, mqtt_frame_isr_cb, NULL);
-  rt_kprintf("[mqtt_recv] ISR-driven listening started\n");
 
   while (1)
   {
-    rt_err_t sem_ret = rt_sem_take(g_mqtt_frame_sem, 5000);
-
-    if (sem_ret == -RT_ETIMEOUT)
-    {
-      if (!g_mqtt_connected)
-      {
-        rt_mutex_take(g_esp8266_mutex, RT_WAITING_FOREVER);
-        if (mqtt_init() == 0)
-          rt_kprintf("[mqtt_recv] Reconnected!\n");
-        rt_mutex_release(g_esp8266_mutex);
-      }
-      continue;
-    }
-
-    if (!g_mqtt_connected)
-      continue;
-
-    has_raw = 0;
+    uint16_t raw_len = 0;
+    uint8_t has_raw = 0;
 
     rt_mutex_take(g_esp8266_mutex, RT_WAITING_FOREVER);
 
     if (g_esp8266_mqtt.wifi->urc.ready)
     {
       raw_len = wifi_esp8266_urc_copy(g_esp8266_mqtt.wifi, raw_buf, sizeof(raw_buf));
-      wifi_esp8266_rx_restart(g_esp8266_mqtt.wifi);
       rt_mutex_release(g_esp8266_mutex);
       if (raw_len > 0)
         has_raw = 1;
     }
     else if (g_esp8266_mqtt.wifi->rx_frame.sta.finsh == 1)
     {
+      rt_base_t level = rt_hw_interrupt_disable();
       uint16_t flen = g_esp8266_mqtt.wifi->rx_frame.sta.len;
       if (flen > sizeof(raw_buf) - 1)
         flen = sizeof(raw_buf) - 1;
       memcpy(raw_buf, g_esp8266_mqtt.wifi->rx_frame.buf, flen);
+      g_esp8266_mqtt.wifi->rx_frame.sta.len = 0;
+      g_esp8266_mqtt.wifi->rx_frame.sta.finsh = 0;
+      rt_hw_interrupt_enable(level);
       raw_buf[flen] = '\0';
       raw_len = flen;
-      wifi_esp8266_rx_restart(g_esp8266_mqtt.wifi);
       rt_mutex_release(g_esp8266_mutex);
       has_raw = 1;
     }
     else
     {
       rt_mutex_release(g_esp8266_mutex);
-      continue;
+      return;
     }
 
     if (!has_raw)
-      continue;
+      return;
 
     if (strstr((const char *)raw_buf, "+MQTTSUBRECV:") == NULL)
       continue;
@@ -435,7 +415,7 @@ static void mqtt_recv_thread_entry(void *parameter)
 
     if (strcmp(recv_topic, ONENET_TOPIC_PROPERTY_SET) == 0)
     {
-      rt_kprintf("[mqtt_recv] SET: %s\n", recv_payload);
+      rt_kprintf("[mqtt] SET: %s\n", recv_payload);
 
       int reply_code;
       const char *reply_msg;
@@ -448,17 +428,17 @@ static void mqtt_recv_thread_entry(void *parameter)
       rt_mutex_release(g_esp8266_mutex);
 
       if (reply_ret == PLATFORM_MQTT_OK)
-        rt_kprintf("[mqtt_recv] SET_REPLY sent (code=%d)\n", reply_code);
+        rt_kprintf("[mqtt] SET_REPLY sent (code=%d)\n", reply_code);
       else
-        rt_kprintf("[mqtt_recv] SET_REPLY FAIL (err=%d)\n", reply_ret);
+        rt_kprintf("[mqtt] SET_REPLY FAIL (err=%d)\n", reply_ret);
     }
     else
     {
       if (strcmp(recv_topic, ONENET_TOPIC_PROPERTY_POST_REPLY) == 0)
         continue;
 
-      rt_kprintf("[mqtt_recv] topic=%s\n", recv_topic);
-      rt_kprintf("[mqtt_recv] payload=%s\n", recv_payload);
+      rt_kprintf("[mqtt] topic=%s\n", recv_topic);
+      rt_kprintf("[mqtt] payload=%s\n", recv_payload);
 
       if (strcmp(recv_topic, ONENET_TOPIC_PROPERTY_GET) == 0)
       {
@@ -466,8 +446,42 @@ static void mqtt_recv_thread_entry(void *parameter)
       }
       else if (strcmp(recv_topic, ONENET_TOPIC_OTA_INFORM) == 0)
       {
-        rt_kprintf("[mqtt_recv] OTA inform\n");
+        rt_kprintf("[mqtt] OTA inform\n");
       }
+    }
+  }
+}
+
+static void mqtt_thread_entry(void *parameter)
+{
+  rt_thread_mdelay(4000);
+  wifi_esp8266_set_frame_cb(g_esp8266_mqtt.wifi, mqtt_frame_isr_cb, NULL);
+  rt_kprintf("[mqtt] Unified thread started\n");
+
+  while (1)
+  {
+    mqtt_process_recv();
+
+    rt_err_t sem_ret = rt_sem_take(g_mqtt_frame_sem, 2000);
+
+    if (sem_ret == -RT_ETIMEOUT)
+    {
+      if (!g_mqtt_connected)
+      {
+        rt_mutex_take(g_esp8266_mutex, RT_WAITING_FOREVER);
+        if (mqtt_init() == 0)
+          rt_kprintf("[mqtt] Reconnected!\n");
+        rt_mutex_release(g_esp8266_mutex);
+      }
+    }
+    else if (g_mqtt_connected)
+    {
+      mqtt_process_recv();
+    }
+
+    while (mqtt_worker_process_one(&g_mqtt_worker))
+    {
+      mqtt_process_recv();
     }
   }
 }
@@ -597,9 +611,9 @@ static int mqtt_init(void)
 /* USER CODE END 0 */
 
 /**
- * @brief  The application entry point.
- * @retval int
- */
+  * @brief  The application entry point.
+  * @retval int
+  */
 int main(void)
 {
 
@@ -675,7 +689,7 @@ int main(void)
   dht11_thread = rt_thread_create("dht11",
                                   dht11_thread_entry,
                                   RT_NULL,
-                                  768,
+                                  512,
                                   20,
                                   10);
   if (dht11_thread != RT_NULL)
@@ -684,7 +698,7 @@ int main(void)
   adc_sensor_thread = rt_thread_create("adc_sen",
                                        adc_sensor_thread_entry,
                                        RT_NULL,
-                                       1024,
+                                       512,
                                        22,
                                        10);
   if (adc_sensor_thread != RT_NULL)
@@ -693,29 +707,20 @@ int main(void)
   pir_sensor_thread = rt_thread_create("pir",
                                        pir_sensor_thread_entry,
                                        RT_NULL,
-                                       640,
+                                       512,
                                        23,
                                        10);
   if (pir_sensor_thread != RT_NULL)
     rt_thread_startup(pir_sensor_thread);
 
-  mqtt_recv_thread = rt_thread_create("mqtt_rcv",
-                                      mqtt_recv_thread_entry,
-                                      RT_NULL,
-                                      1536,
-                                      6,
-                                      20);
-  if (mqtt_recv_thread != RT_NULL)
-    rt_thread_startup(mqtt_recv_thread);
-
-  mqtt_worker_thread = rt_thread_create("mqtt_wk",
-                                        mqtt_worker_thread_entry,
-                                        &g_mqtt_worker,
-                                        768,
-                                        20,
-                                        20);
-  if (mqtt_worker_thread != RT_NULL)
-    rt_thread_startup(mqtt_worker_thread);
+  mqtt_thread = rt_thread_create("mqtt",
+                                 mqtt_thread_entry,
+                                 RT_NULL,
+                                 1536,
+                                 6,
+                                 20);
+  if (mqtt_thread != RT_NULL)
+    rt_thread_startup(mqtt_thread);
 
   /* USER CODE END 2 */
 
@@ -732,9 +737,9 @@ int main(void)
 }
 
 /**
- * @brief System Clock Configuration
- * @retval None
- */
+  * @brief System Clock Configuration
+  * @retval None
+  */
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
@@ -742,8 +747,8 @@ void SystemClock_Config(void)
   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
   /** Initializes the RCC Oscillators according to the specified parameters
-   * in the RCC_OscInitTypeDef structure.
-   */
+  * in the RCC_OscInitTypeDef structure.
+  */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
@@ -757,8 +762,9 @@ void SystemClock_Config(void)
   }
 
   /** Initializes the CPU, AHB and APB buses clocks
-   */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
+  */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
@@ -805,13 +811,13 @@ void rt_hw_us_delay(rt_uint32_t us)
 /* USER CODE END 4 */
 
 /**
- * @brief  Period elapsed callback in non blocking mode
- * @note   This function is called  when TIM4 interrupt took place, inside
- * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
- * a global variable "uwTick" used as application time base.
- * @param  htim : TIM handle
- * @retval None
- */
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM4 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   /* USER CODE BEGIN Callback 0 */
@@ -827,9 +833,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 }
 
 /**
- * @brief  This function is executed in case of error occurrence.
- * @retval None
- */
+  * @brief  This function is executed in case of error occurrence.
+  * @retval None
+  */
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
@@ -842,12 +848,12 @@ void Error_Handler(void)
 }
 #ifdef USE_FULL_ASSERT
 /**
- * @brief  Reports the name of the source file and the source line number
- *         where the assert_param error has occurred.
- * @param  file: pointer to the source file name
- * @param  line: assert_param error line source number
- * @retval None
- */
+  * @brief  Reports the name of the source file and the source line number
+  *         where the assert_param error has occurred.
+  * @param  file: pointer to the source file name
+  * @param  line: assert_param error line source number
+  * @retval None
+  */
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */

@@ -117,6 +117,24 @@ static void worker_process_item(mqtt_worker_t *w, const mqtt_post_item_t *item)
     }
 }
 
+uint8_t mqtt_worker_process_one(mqtt_worker_t *w)
+{
+    mqtt_post_item_t item;
+    if (worker_dequeue(w, &item) != 0)
+        return 0;
+    worker_process_item(w, &item);
+    return 1;
+}
+
+void mqtt_worker_process_all(mqtt_worker_t *w)
+{
+    mqtt_post_item_t item;
+    while (worker_dequeue(w, &item) == 0)
+    {
+        worker_process_item(w, &item);
+    }
+}
+
 void mqtt_worker_thread_entry(void *parameter)
 {
     mqtt_worker_t *w = (mqtt_worker_t *)parameter;

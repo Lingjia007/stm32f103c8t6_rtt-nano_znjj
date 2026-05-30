@@ -39,6 +39,10 @@ void mqtt_worker_init(mqtt_worker_t *w,
 
 int8_t mqtt_worker_submit(mqtt_worker_t *w, const mqtt_post_item_t *item);
 
+uint8_t mqtt_worker_process_one(mqtt_worker_t *w);
+
+void mqtt_worker_process_all(mqtt_worker_t *w);
+
 void mqtt_worker_thread_entry(void *parameter);
 
 #endif

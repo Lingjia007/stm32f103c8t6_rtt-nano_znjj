@@ -76,7 +76,7 @@ static int16_t esp8266_mqtt_publish_raw(void *ctx, uint8_t link_id, const char *
     if (ret != PLATFORM_WIFI_OK)
         return PLATFORM_MQTT_ERROR;
 
-    wifi_esp8266_rx_restart(self->wifi);
+    wifi_esp8266_rx_restart_save_mqtt(self->wifi);
     wifi_esp8266_uart_printf(self->wifi, "%s", payload);
 
     uint32_t timeout = 3000;
@@ -86,20 +86,24 @@ static int16_t esp8266_mqtt_publish_raw(void *ctx, uint8_t link_id, const char *
         resp = wifi_esp8266_rx_get_frame(self->wifi);
         if (resp != NULL)
         {
+            if (strstr((const char *)resp, "+MQTTSUBRECV:") != NULL)
+            {
+                wifi_esp8266_urc_save(self->wifi);
+            }
+
             if (strstr((const char *)resp, "+MQTTPUB:OK") != NULL ||
                 strstr((const char *)resp, "OK") != NULL)
             {
+                wifi_esp8266_rx_restart(self->wifi);
                 return PLATFORM_MQTT_OK;
             }
             else if (strstr((const char *)resp, "ERROR") != NULL ||
                      strstr((const char *)resp, "FAIL") != NULL)
             {
+                wifi_esp8266_rx_restart(self->wifi);
                 return PLATFORM_MQTT_ERROR;
             }
-            if (strstr((const char *)resp, "+MQTTSUBRECV:") != NULL)
-            {
-                wifi_esp8266_urc_save(self->wifi);
-            }
+
             wifi_esp8266_rx_restart(self->wifi);
         }
         timeout--;

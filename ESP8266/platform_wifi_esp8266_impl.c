@@ -30,6 +30,20 @@ void wifi_esp8266_rx_restart(wifi_esp8266_t *wifi)
     wifi->rx_frame.sta.finsh = 0;
 }
 
+void wifi_esp8266_rx_restart_save_mqtt(wifi_esp8266_t *wifi)
+{
+    if (wifi->rx_frame.sta.finsh == 1 && wifi->rx_frame.sta.len > 0)
+    {
+        wifi->rx_frame.buf[wifi->rx_frame.sta.len] = '\0';
+        if (strstr((const char *)wifi->rx_frame.buf, "+MQTTSUBRECV:") != NULL)
+        {
+            wifi_esp8266_urc_save(wifi);
+        }
+    }
+    wifi->rx_frame.sta.len = 0;
+    wifi->rx_frame.sta.finsh = 0;
+}
+
 uint8_t *wifi_esp8266_rx_get_frame(wifi_esp8266_t *wifi)
 {
     if (wifi->rx_frame.sta.finsh == 1)
@@ -83,7 +97,7 @@ static int16_t esp8266_send_at_cmd_impl(wifi_esp8266_t *wifi, const char *cmd, c
 {
     uint8_t *ret = NULL;
 
-    wifi_esp8266_rx_restart(wifi);
+    wifi_esp8266_rx_restart_save_mqtt(wifi);
     wifi_esp8266_uart_printf(wifi, "%s\r\n", cmd);
 
     if ((ack == NULL) || (timeout == 0))
@@ -96,18 +110,18 @@ static int16_t esp8266_send_at_cmd_impl(wifi_esp8266_t *wifi, const char *cmd, c
         ret = wifi_esp8266_rx_get_frame(wifi);
         if (ret != NULL)
         {
+            if (strstr((const char *)ret, "+MQTTSUBRECV:") != NULL)
+            {
+                wifi_esp8266_urc_save(wifi);
+            }
+
             if (strstr((const char *)ret, ack) != NULL)
             {
+                wifi_esp8266_rx_restart(wifi);
                 return PLATFORM_WIFI_OK;
             }
-            else
-            {
-                if (strstr((const char *)ret, "+MQTTSUBRECV:") != NULL)
-                {
-                    wifi_esp8266_urc_save(wifi);
-                }
-                wifi_esp8266_rx_restart(wifi);
-            }
+
+            wifi_esp8266_rx_restart(wifi);
         }
         timeout--;
         esp8266_delay_ms(1);

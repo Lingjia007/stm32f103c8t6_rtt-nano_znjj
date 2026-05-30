@@ -37,6 +37,7 @@ void platform_wifi_esp8266_register(wifi_esp8266_t *wifi, platform_uart_base_t *
 void wifi_esp8266_uart_irq_handler(wifi_esp8266_t *wifi);
 void wifi_esp8266_uart_printf(wifi_esp8266_t *wifi, const char *fmt, ...);
 void wifi_esp8266_rx_restart(wifi_esp8266_t *wifi);
+void wifi_esp8266_rx_restart_save_mqtt(wifi_esp8266_t *wifi);
 uint8_t *wifi_esp8266_rx_get_frame(wifi_esp8266_t *wifi);
 uint16_t wifi_esp8266_rx_get_frame_len(wifi_esp8266_t *wifi);
 void wifi_esp8266_set_frame_cb(wifi_esp8266_t *wifi, wifi_frame_cb_t cb, void *arg);

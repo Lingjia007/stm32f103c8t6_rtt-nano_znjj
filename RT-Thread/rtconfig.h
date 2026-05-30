@@ -34,7 +34,7 @@
 
 // <o>the size of main thread<1-4086>
 //  <i>Default: 512
-#define RT_MAIN_THREAD_STACK_SIZE 2048
+#define RT_MAIN_THREAD_STACK_SIZE 1536
 // </h>
 
 // <h>Debug Configuration
@@ -159,7 +159,7 @@
 // <o>The stack size for finsh thread <64-40960>
 //  <i>the buffer size of finsh
 //  <i>Default: 1024  (1024 Byte)
-#define FINSH_THREAD_STACK_SIZE 2048
+#define FINSH_THREAD_STACK_SIZE 1536
 // </h>
 
 #if defined(RT_USING_FINSH)
