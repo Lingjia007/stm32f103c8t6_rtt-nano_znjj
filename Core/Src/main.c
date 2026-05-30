@@ -43,9 +43,6 @@
 #include "platform_mqtt_esp8266_impl.h"
 #include "key.h"
 
-#define DHT11_UPLOAD_ENABLED 1
-#define DHT11_UPLOAD_INTERVAL 3600
-#define DHT11_READ_RETRY 3
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -55,7 +52,14 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define DHT11_UPLOAD_ENABLED 1
+#define DHT11_UPLOAD_INTERVAL 3600
+#define DHT11_READ_RETRY 3
 
+#define THRESHOLD_CONTROL_ENABLED 0
+#define THRESHOLD_TEMP_MAX_DEFAULT 35
+#define THRESHOLD_HUMI_MAX_DEFAULT 80
+#define THRESHOLD_MQ2_MAX_DEFAULT 30
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -98,6 +102,27 @@ static uint8_t g_kv_fan = 0;
 static uint8_t g_kv_nebulizer = 0;
 static uint8_t g_kv_buzzer = 0;
 static char g_kv_pir[ONENET_KV_MAX_STRING_LEN] = "not_detected";
+
+static int g_kv_temp_max = THRESHOLD_TEMP_MAX_DEFAULT;
+static int g_kv_humi_max = THRESHOLD_HUMI_MAX_DEFAULT;
+static int g_kv_mq2_max = THRESHOLD_MQ2_MAX_DEFAULT;
+
+static void mqtt_post_keys(const char *key1, const char *key2)
+{
+  if (!g_mqtt_connected)
+    return;
+
+  mqtt_post_item_t item;
+  memset(&item, 0, sizeof(item));
+  strncpy(item.keys[0], key1, ONENET_KV_MAX_KEY_LEN - 1);
+  item.key_count = 1;
+  if (key2 != RT_NULL)
+  {
+    strncpy(item.keys[1], key2, ONENET_KV_MAX_KEY_LEN - 1);
+    item.key_count = 2;
+  }
+  mqtt_worker_submit(&g_mqtt_worker, &item);
+}
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -183,20 +208,24 @@ void key_event_callback(uint8_t key_id, uint8_t event, void *user_data)
       g_kv_fan = !g_kv_fan;
       relay_fan_set(g_kv_fan);
       rt_kprintf("  FAN toggled -> %d\n", g_kv_fan);
+      mqtt_post_keys("FAN", RT_NULL);
       break;
     case 1:
       g_kv_nebulizer = !g_kv_nebulizer;
       relay_nebulizer_set(g_kv_nebulizer);
       rt_kprintf("  NEBULIZER toggled -> %d\n", g_kv_nebulizer);
+      mqtt_post_keys("NEBULIZER", RT_NULL);
       break;
     case 2:
       g_kv_buzzer = !g_kv_buzzer;
       buzzer_set(g_kv_buzzer);
       rt_kprintf("  BUZZER toggled -> %d\n", g_kv_buzzer);
+      mqtt_post_keys("BUZZER", RT_NULL);
       break;
     case 3:
       g_kv_bsp_led = !g_kv_bsp_led;
       rt_kprintf("  LED blink toggled -> %d\n", g_kv_bsp_led);
+      mqtt_post_keys("BSP_LED", RT_NULL);
       break;
     }
   }
@@ -228,6 +257,14 @@ static void onenet_kv_table_setup(void)
                      PLATFORM_MQTT_VALUE_BOOL, &g_kv_buzzer, buzzer_on_change);
   onenet_kv_register(&g_kv_table, "PIR",
                      PLATFORM_MQTT_VALUE_STRING, g_kv_pir, NULL);
+#if THRESHOLD_CONTROL_ENABLED
+  onenet_kv_register(&g_kv_table, "TEMP_MAX",
+                     PLATFORM_MQTT_VALUE_INT, &g_kv_temp_max, NULL);
+  onenet_kv_register(&g_kv_table, "HUMI_MAX",
+                     PLATFORM_MQTT_VALUE_INT, &g_kv_humi_max, NULL);
+  onenet_kv_register(&g_kv_table, "MQ2_MAX",
+                     PLATFORM_MQTT_VALUE_INT, &g_kv_mq2_max, NULL);
+#endif
 
   mqtt_worker_init(&g_mqtt_worker, &g_kv_table,
                    &g_esp8266_mqtt.base, ESP8266_MQTT_LINK_ID,
@@ -322,15 +359,39 @@ static void dht11_thread_entry(void *parameter)
       rt_kprintf("  DHT11: Temp=%dC, Humi=%d%%\n",
                  g_kv_temperature, g_kv_humidity);
 
-      if (g_mqtt_connected)
+#if THRESHOLD_CONTROL_ENABLED
+      if (g_kv_temperature >= g_kv_temp_max && !g_kv_fan)
       {
-        mqtt_post_item_t item;
-        memset(&item, 0, sizeof(item));
-        strncpy(item.keys[0], "TEMPERATURE", ONENET_KV_MAX_KEY_LEN - 1);
-        strncpy(item.keys[1], "HUMIDITY", ONENET_KV_MAX_KEY_LEN - 1);
-        item.key_count = 2;
-        mqtt_worker_submit(&g_mqtt_worker, &item);
+        g_kv_fan = 1;
+        relay_fan_set(1);
+        rt_kprintf("  [ALERT] Temp=%d >= MAX=%d, FAN ON\n", g_kv_temperature, g_kv_temp_max);
+        mqtt_post_keys("FAN", RT_NULL);
       }
+      else if (g_kv_temperature < g_kv_temp_max && g_kv_fan)
+      {
+        g_kv_fan = 0;
+        relay_fan_set(0);
+        rt_kprintf("  [ALERT] Temp=%d < MAX=%d, FAN OFF\n", g_kv_temperature, g_kv_temp_max);
+        mqtt_post_keys("FAN", RT_NULL);
+      }
+
+      if (g_kv_humidity >= g_kv_humi_max && !g_kv_nebulizer)
+      {
+        g_kv_nebulizer = 1;
+        relay_nebulizer_set(1);
+        rt_kprintf("  [ALERT] Humi=%d >= MAX=%d, NEBULIZER ON\n", g_kv_humidity, g_kv_humi_max);
+        mqtt_post_keys("NEBULIZER", RT_NULL);
+      }
+      else if (g_kv_humidity < g_kv_humi_max && g_kv_nebulizer)
+      {
+        g_kv_nebulizer = 0;
+        relay_nebulizer_set(0);
+        rt_kprintf("  [ALERT] Humi=%d < MAX=%d, NEBULIZER OFF\n", g_kv_humidity, g_kv_humi_max);
+        mqtt_post_keys("NEBULIZER", RT_NULL);
+      }
+#endif
+
+      mqtt_post_keys("TEMPERATURE", "HUMIDITY");
     }
     else
     {
@@ -364,15 +425,24 @@ static void adc_sensor_thread_entry(void *parameter)
     g_kv_light = light_percentage;
     g_kv_mq2 = mq2_percentage;
 
-    if (g_mqtt_connected)
+#if THRESHOLD_CONTROL_ENABLED
+    if (g_kv_mq2 >= g_kv_mq2_max && !g_kv_buzzer)
     {
-      mqtt_post_item_t item;
-      memset(&item, 0, sizeof(item));
-      strncpy(item.keys[0], "LIGHT", ONENET_KV_MAX_KEY_LEN - 1);
-      strncpy(item.keys[1], "MQ2", ONENET_KV_MAX_KEY_LEN - 1);
-      item.key_count = 2;
-      mqtt_worker_submit(&g_mqtt_worker, &item);
+      g_kv_buzzer = 1;
+      buzzer_set(1);
+      rt_kprintf("  [ALERT] MQ2=%d >= MAX=%d, BUZZER ON\n", g_kv_mq2, g_kv_mq2_max);
+      mqtt_post_keys("BUZZER", RT_NULL);
     }
+    else if (g_kv_mq2 < g_kv_mq2_max && g_kv_buzzer)
+    {
+      g_kv_buzzer = 0;
+      buzzer_set(0);
+      rt_kprintf("  [ALERT] MQ2=%d < MAX=%d, BUZZER OFF\n", g_kv_mq2, g_kv_mq2_max);
+      mqtt_post_keys("BUZZER", RT_NULL);
+    }
+#endif
+
+    mqtt_post_keys("LIGHT", "MQ2");
 
     rt_thread_mdelay(5000);
   }
@@ -520,7 +590,7 @@ static void mqtt_process_recv(void)
 
 static void mqtt_thread_entry(void *parameter)
 {
-  rt_thread_mdelay(4000);
+  rt_thread_mdelay(3000);
   wifi_esp8266_set_frame_cb(g_esp8266_mqtt.wifi, mqtt_frame_isr_cb, NULL);
   rt_kprintf("[mqtt] Unified thread started\n");
 
