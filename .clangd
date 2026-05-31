@@ -24,6 +24,8 @@ CompileFlags:
     - '-Id:/edgedownload/stm32f103c8t6_znjj/MQ2'
     - '-Id:/edgedownload/stm32f103c8t6_znjj/Relay'
     - '-Id:/edgedownload/stm32f103c8t6_znjj/BUZZER'
+    - '-Id:/edgedownload/stm32f103c8t6_znjj/Key'
+    - '-Id:/edgedownload/stm32f103c8t6_znjj/Led'
     - '-DUSE_HAL_DRIVER'
     - '-DSTM32F103xB'
     - '-D__alignof__(x)='

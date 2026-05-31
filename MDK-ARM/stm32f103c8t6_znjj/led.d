@@ -1,5 +1,15 @@
-stm32f103c8t6_znjj/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
-  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h \
+stm32f103c8t6_znjj/led.o: ..\Led\led.c \
+  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtthread.h \
+  ..\RT-Thread\rtconfig.h \
+  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\components\finsh\inc\finsh_config.h \
+  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtdebug.h \
+  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtdef.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdarg.h \
+  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtservice.h \
+  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtm.h \
+  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\components\finsh\inc\finsh.h \
+  C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h ..\Led\led.h \
+  ..\Core\Inc\main.h ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h \
   ..\Core\Inc\stm32f1xx_hal_conf.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h \
@@ -29,25 +39,4 @@ stm32f103c8t6_znjj/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pwr.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h \
-  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h \
-  ..\Core\Inc\adc.h ..\Core\Inc\usart.h ..\Core\Inc\gpio.h \
-  C:\Keil_v5\ARM\ARMCLANG\include\string.h \
-  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtthread.h \
-  ..\RT-Thread\rtconfig.h \
-  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\components\finsh\inc\finsh_config.h \
-  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtdebug.h \
-  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtdef.h \
-  C:\Keil_v5\ARM\ARMCLANG\include\stdarg.h \
-  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtservice.h \
-  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rtm.h \
-  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\components\finsh\inc\finsh.h \
-  ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\include\rthw.h \
-  ..\OLED\oled.h C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h \
-  ..\ESP8266\esp8266_init.h ..\ESP8266\platform_wifi_esp8266_impl.h \
-  ..\ESP8266\platform_wifi.h ..\ESP8266\platform_uart.h \
-  ..\ESP8266\platform_mqtt_esp8266_impl.h ..\ESP8266\platform_mqtt.h \
-  ..\ESP8266\platform_uart_stm32_impl.h ..\DHT11\dht11.h \
-  ..\ESP8266\esp8266_config.h ..\Light_Sensor\light_sensor.h \
-  ..\MQ2\mq2.h ..\PIR_Sensor\pir_sensor.h ..\ESP8266\onenet_kv.h \
-  ..\ESP8266\onenet_cmd.h ..\ESP8266\mqtt_worker.h ..\Relay\relay.h \
-  ..\BUZZER\buzzer.h ..\Key\key.h ..\Led\led.h
+  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h

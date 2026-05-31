@@ -42,6 +42,7 @@
 #include "buzzer.h"
 #include "platform_mqtt_esp8266_impl.h"
 #include "key.h"
+#include "led.h"
 
 /* USER CODE END Includes */
 
@@ -139,7 +140,11 @@ static void onenet_kv_table_setup(void);
 static int8_t bsp_led_on_change(const char *key, void *value, uint8_t value_type)
 {
   uint8_t led_val = *((uint8_t *)value);
-  rt_kprintf("BSP_LED changed -> %d (%s)\n", led_val, led_val ? "blink" : "off");
+  if (led_val)
+    led_on();
+  else
+    led_off();
+  rt_kprintf("BSP_LED changed -> %d (%s)\n", led_val, led_val ? "on" : "off");
   return 0;
 }
 
@@ -224,7 +229,11 @@ void key_event_callback(uint8_t key_id, uint8_t event, void *user_data)
       break;
     case 3:
       g_kv_bsp_led = !g_kv_bsp_led;
-      rt_kprintf("  LED blink toggled -> %d\n", g_kv_bsp_led);
+      if (g_kv_bsp_led)
+        led_on();
+      else
+        led_off();
+      rt_kprintf("  LED toggled -> %d\n", g_kv_bsp_led);
       mqtt_post_keys("BSP_LED", RT_NULL);
       break;
     }
@@ -272,18 +281,6 @@ static void onenet_kv_table_setup(void)
                    g_esp8266_mutex);
 
   onenet_cmd_init(&g_cmd_ctx, &g_kv_table);
-}
-
-static void led_thread_entry(void *parameter)
-{
-  while (1)
-  {
-    if (g_kv_bsp_led)
-      HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-    else
-      HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
-    rt_thread_mdelay(500);
-  }
 }
 
 static void oled_thread_entry(void *parameter)
@@ -590,7 +587,7 @@ static void mqtt_process_recv(void)
 
 static void mqtt_thread_entry(void *parameter)
 {
-  rt_thread_mdelay(3000);
+  rt_thread_mdelay(2000);
   wifi_esp8266_set_frame_cb(g_esp8266_mqtt.wifi, mqtt_frame_isr_cb, NULL);
   rt_kprintf("[mqtt] Unified thread started\n");
 
@@ -693,7 +690,7 @@ static int mqtt_init(void)
   {
     rt_kprintf("ESP8266 restarted successfully!\n");
   }
-  rt_thread_mdelay(2000);
+  rt_thread_mdelay(200);
 
   rt_kprintf("Checking MQTT connection...\n");
 
@@ -739,7 +736,7 @@ static int mqtt_init(void)
       return -1;
     }
     rt_kprintf("WiFi connected!\n");
-    rt_thread_mdelay(1000);
+    rt_thread_mdelay(200);
   }
   else
   {
@@ -817,11 +814,11 @@ int main(void)
   rt_mutex_release(g_esp8266_mutex);
 
   led_thread = rt_thread_create("led",
-                                led_thread_entry,
+                                led_entry,
                                 RT_NULL,
-                                96,
-                                24,
-                                10);
+                                256,
+                                19,
+                                20);
   if (led_thread != RT_NULL)
     rt_thread_startup(led_thread);
 
@@ -829,7 +826,7 @@ int main(void)
                                  oled_thread_entry,
                                  RT_NULL,
                                  192,
-                                 24,
+                                 20,
                                  10);
   if (oled_thread != RT_NULL)
     rt_thread_startup(oled_thread);
@@ -847,7 +844,7 @@ int main(void)
                                        adc_sensor_thread_entry,
                                        RT_NULL,
                                        512,
-                                       22,
+                                       20,
                                        10);
   if (adc_sensor_thread != RT_NULL)
     rt_thread_startup(adc_sensor_thread);
@@ -856,7 +853,7 @@ int main(void)
                                        pir_sensor_thread_entry,
                                        RT_NULL,
                                        512,
-                                       23,
+                                       20,
                                        10);
   if (pir_sensor_thread != RT_NULL)
     rt_thread_startup(pir_sensor_thread);
@@ -874,7 +871,7 @@ int main(void)
                                 key_thread_entry,
                                 RT_NULL,
                                 512,
-                                25,
+                                20,
                                 10);
   if (key_thread != RT_NULL)
   {
