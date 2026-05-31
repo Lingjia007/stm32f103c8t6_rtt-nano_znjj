@@ -95,21 +95,40 @@ static rt_uint8_t breathe_duty(rt_uint8_t sine_val)
     return LED_PWM_MIN_DUTY + (rt_uint8_t)((rt_uint32_t)(100 - LED_PWM_MIN_DUTY) * sine_val / 100);
 }
 
-static void led_sw_pwm_output(rt_uint8_t duty)
+static rt_err_t led_sw_pwm_output(rt_uint8_t duty)
 {
-    rt_uint32_t on_time = (LED_SW_PWM_PERIOD_MS * duty) / 100;
-    rt_uint32_t off_time = LED_SW_PWM_PERIOD_MS - on_time;
+    rt_uint32_t on_us = (LED_SW_PWM_PERIOD_MS * 1000 * duty) / 100;
+    rt_uint32_t off_us = (LED_SW_PWM_PERIOD_MS * 1000) - on_us;
+    rt_tick_t deadline;
+    rt_tick_t one_tick = RT_TICK_PER_SECOND / 1000;
 
-    if (on_time > 0)
+    if (one_tick == 0)
+        one_tick = 1;
+
+    if (on_us > 0)
     {
         LED_ON();
-        rt_thread_mdelay(on_time);
+        deadline = rt_tick_get() + (on_us * RT_TICK_PER_SECOND + 999999) / 1000000;
+        while (rt_tick_get() < deadline)
+        {
+            if (!led_running || current_mode != LED_MODE_PWM)
+                return -RT_ERROR;
+            rt_thread_mdelay(1);
+        }
     }
-    if (off_time > 0)
+    if (off_us > 0)
     {
         LED_OFF();
-        rt_thread_mdelay(off_time);
+        deadline = rt_tick_get() + (off_us * RT_TICK_PER_SECOND + 999999) / 1000000;
+        while (rt_tick_get() < deadline)
+        {
+            if (!led_running || current_mode != LED_MODE_PWM)
+                return -RT_ERROR;
+            rt_thread_mdelay(1);
+        }
     }
+
+    return RT_EOK;
 }
 
 static const rt_uint8_t sine_table[50] = {
@@ -164,7 +183,8 @@ void led_entry(void *parameter)
                     current_brightness = target_brightness;
                 }
                 rt_uint8_t pwm_duty = breathe_duty((rt_uint8_t)fixed_level);
-                led_sw_pwm_output(pwm_duty);
+                if (led_sw_pwm_output(pwm_duty) != RT_EOK)
+                    continue;
             }
             else
             {
@@ -188,7 +208,8 @@ void led_entry(void *parameter)
 
                 rt_uint8_t sine_val = breathe_lookup(level);
                 rt_uint8_t pwm_duty = breathe_duty(sine_val);
-                led_sw_pwm_output(pwm_duty);
+                if (led_sw_pwm_output(pwm_duty) != RT_EOK)
+                    continue;
             }
         }
     }
